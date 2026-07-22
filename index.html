@@ -337,7 +337,6 @@
             gap: 10px;
         }
 
-        /* Pure solid visible text styles with zero transparent clipping bugs */
         .scramble-line-1 {
             color: #ffffff !important;
             text-shadow: 0 4px 25px rgba(255, 255, 255, 0.4);
@@ -1021,7 +1020,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION WITH HIGH-CONTRAST SOLID TITLES -->
+    <!-- HERO SECTION WITH 100% SOLID CRISP HIGH-CONTRAST TITLES -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -1217,7 +1216,7 @@
                     </div>
                 </div>
 
-                <!-- 3. GeoNova Fichaje -->
+                <!-- 3. GeoNova Fichaje (DESCARGA DE APK PROTEGIDA CON PIN) -->
                 <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.25); --card-glow: rgba(6, 182, 212, 0.2); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);">
                     <div>
                         <!-- Referential Image Preview -->
@@ -1245,10 +1244,10 @@
                         </div>
                     </div>
                     <div>
-                        <a id="link-geoasist" href="https://fichaje.novasolum.cloud" target="_blank" class="btn btn-panel">
-                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-                            Ingresar a GeoNova Fichaje
-                        </a>
+                        <button onclick="openPinModal()" class="btn btn-panel" style="cursor: pointer; width: 100%;">
+                            <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                            Descargar App GeoNova Fichaje (APK)
+                        </button>
                     </div>
                 </div>
 
@@ -1531,6 +1530,33 @@
         </div>
     </footer>
 
+    <!-- PIN MODAL PARA DESCARGA DE APK PROTEGIDA CON CLAVE 2772 -->
+    <div id="pin-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: linear-gradient(135deg, rgba(20, 20, 32, 0.95) 0%, rgba(10, 10, 18, 0.98) 100%); border: 1px solid var(--accent-cyan); border-radius: var(--radius-lg); padding: 36px; max-width: 420px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(6, 182, 212, 0.35); position: relative;">
+            <button onclick="closePinModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-tertiary); cursor: pointer; font-size: 20px;">✕</button>
+            
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--accent-cyan);">
+                <i data-lucide="lock" style="width: 28px; height: 28px;"></i>
+            </div>
+
+            <h3 style="font-size: 20px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">Descarga Restringida</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5;">Ingresa el PIN de 4 dígitos de autorización empresarial para descargar el instalador móvil de <strong>GeoNova Fichaje (.APK)</strong>:</p>
+
+            <form onsubmit="verifyPinAndDownload(event)">
+                <input type="password" maxlength="4" id="pin-input" placeholder="••••" style="width: 160px; height: 50px; text-align: center; font-size: 24px; font-weight: 800; letter-spacing: 8px; background: rgba(0,0,0,0.6); border: 2px solid var(--border-glow); border-radius: var(--radius-md); color: #ffffff; outline: none; margin: 0 auto 16px; display: block;">
+                <div id="pin-error" style="display: none; color: #ef4444; font-size: 13px; font-weight: 600; margin-bottom: 16px;">PIN incorrecto. Acceso denegado.</div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: 10px;">
+                    <button type="button" onclick="closePinModal()" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" style="background: var(--accent-cyan); color: #000; font-weight: 800;">
+                        <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                        Verificar & Descargar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- JS SCRIPTS & 3D UNIVERSE CANVAS -->
     <script>
         // Initialize Lucide Icons
@@ -1543,7 +1569,55 @@
         }
 
         /* ==========================================================================
-           1. ENTORNO DUAL: LOCALHOST (PUERTOS) VS PRODUCCIÓN (SOLUCIONES / DOMINIOS)
+           1. PIN MODAL & DESCARGA PROTEGIDA DE APK (CLAVE: 2772)
+           ========================================================================== */
+        function openPinModal() {
+            const modal = document.getElementById('pin-modal-overlay');
+            const input = document.getElementById('pin-input');
+            const err = document.getElementById('pin-error');
+            if (modal) {
+                modal.style.display = 'flex';
+                input.value = '';
+                if (err) err.style.display = 'none';
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+
+        function closePinModal() {
+            const modal = document.getElementById('pin-modal-overlay');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function verifyPinAndDownload(e) {
+            e.preventDefault();
+            const pin = document.getElementById('pin-input').value.trim();
+            const err = document.getElementById('pin-error');
+            
+            if (pin === '2772') {
+                if (err) err.style.display = 'none';
+                closePinModal();
+                
+                // Trigger direct APK download
+                const a = document.createElement('a');
+                a.href = 'assets/GeoNova_Fichaje.apk';
+                a.download = 'GeoNova_Fichaje.apk';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                alert('¡PIN Correcto! La descarga de la app GeoNova Fichaje (.APK) ha iniciado.');
+            } else {
+                if (err) {
+                    err.style.display = 'block';
+                    err.textContent = 'PIN incorrecto. Acceso denegado.';
+                }
+                document.getElementById('pin-input').value = '';
+                document.getElementById('pin-input').focus();
+            }
+        }
+
+        /* ==========================================================================
+           2. ENTORNO DUAL: LOCALHOST (PUERTOS) VS PRODUCCIÓN (SOLUCIONES / DOMINIOS)
            ========================================================================== */
         const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
@@ -1555,17 +1629,16 @@
             simulador: IS_LOCAL ? 'http://localhost:4005' : 'https://simulador.novasolum.cloud'
         };
 
-        document.getElementById('link-crm').href = TARGET_URLS.crm;
-        document.getElementById('link-geoweb').href = TARGET_URLS.geo;
-        document.getElementById('link-geoasist').href = TARGET_URLS.fichaje;
-        document.getElementById('link-farmago').href = TARGET_URLS.farmago;
-        document.getElementById('link-simulador').href = TARGET_URLS.simulador;
+        if (document.getElementById('link-crm')) document.getElementById('link-crm').href = TARGET_URLS.crm;
+        if (document.getElementById('link-geoweb')) document.getElementById('link-geoweb').href = TARGET_URLS.geo;
+        if (document.getElementById('link-farmago')) document.getElementById('link-farmago').href = TARGET_URLS.farmago;
+        if (document.getElementById('link-simulador')) document.getElementById('link-simulador').href = TARGET_URLS.simulador;
 
-        document.getElementById('foot-crm').href = TARGET_URLS.crm;
-        document.getElementById('foot-geo').href = TARGET_URLS.geo;
-        document.getElementById('foot-fichaje').href = TARGET_URLS.fichaje;
-        document.getElementById('foot-farmago').href = TARGET_URLS.farmago;
-        document.getElementById('foot-simulador').href = TARGET_URLS.simulador;
+        if (document.getElementById('foot-crm')) document.getElementById('foot-crm').href = TARGET_URLS.crm;
+        if (document.getElementById('foot-geo')) document.getElementById('foot-geo').href = TARGET_URLS.geo;
+        if (document.getElementById('foot-fichaje')) document.getElementById('foot-fichaje').href = TARGET_URLS.fichaje;
+        if (document.getElementById('foot-farmago')) document.getElementById('foot-farmago').href = TARGET_URLS.farmago;
+        if (document.getElementById('foot-simulador')) document.getElementById('foot-simulador').href = TARGET_URLS.simulador;
 
         // Health check para monitorear disponibilidad de soluciones
         const healthCheckMapping = [
@@ -1660,7 +1733,7 @@
         }
 
         /* ==========================================================================
-           2. 3D UNIVERSE & CELESTIAL SPACE NAVIGATOR CANVAS
+           3. 3D UNIVERSE & CELESTIAL SPACE NAVIGATOR CANVAS
            ========================================================================== */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
