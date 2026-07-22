@@ -217,7 +217,7 @@
         }
 
         /* ==========================================================================
-           HEADER / NAVBAR (RESPONSIVE)
+           HEADER / NAVBAR
            ========================================================================== */
         header {
             position: sticky;
@@ -312,7 +312,7 @@
         }
 
         /* ==========================================================================
-           HERO SECTION WITH CRISP VISIBLE HIGH-CONTRAST TYPOGRAPHY
+           HERO SECTION WITH 100% SOLID CRISP HIGH-CONTRAST TITLES
            ========================================================================== */
         .hero-section {
             padding: 90px 0 70px;
@@ -326,33 +326,30 @@
         }
 
         .hero-title {
-            font-size: clamp(32px, 5.5vw, 62px);
+            font-size: clamp(30px, 5vw, 58px);
             font-weight: 900;
-            line-height: 1.15;
+            line-height: 1.2;
             margin: 24px 0 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
 
+        /* Pure solid visible text styles with zero transparent clipping bugs */
         .scramble-line-1 {
-            color: #ffffff;
-            text-shadow: 0 4px 30px rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+            text-shadow: 0 4px 25px rgba(255, 255, 255, 0.4);
             font-weight: 900;
         }
 
         .scramble-line-2 {
-            color: #c084fc;
-            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #38bdf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #d8b4fe !important;
+            text-shadow: 0 0 30px rgba(192, 132, 252, 0.8), 0 0 10px rgba(56, 189, 248, 0.5);
             font-weight: 900;
-            text-shadow: 0 0 40px rgba(192, 132, 252, 0.4);
         }
 
-        /* Sci-Fi Reveal Character Styling */
         .reveal-char {
             display: inline-block;
             transition: transform 0.2s ease, opacity 0.2s ease;
@@ -403,9 +400,7 @@
             font-weight: 800;
             font-family: var(--font-heading);
             color: #ffffff;
-            background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
         }
 
         .metric-label {
@@ -512,7 +507,7 @@
         }
 
         /* ==========================================================================
-           SOLUCIONES EMPRESARIALES GRID (HUB PRINCIPAL)
+           SOLUCIONES EMPRESARIALES GRID WITH REFERENTIAL PREVIEW IMAGES
            ========================================================================== */
         .ecosystem-section {
             padding: 80px 0;
@@ -521,7 +516,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 28px;
             margin-top: 40px;
         }
@@ -530,7 +525,7 @@
             background: var(--bg-card);
             border: 1px solid var(--card-border-color, var(--border-subtle));
             border-radius: var(--radius-lg);
-            padding: 32px;
+            padding: 28px;
             backdrop-filter: blur(16px);
             transition: var(--transition);
             display: flex;
@@ -558,16 +553,39 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--card-glow, rgba(168, 85, 247, 0.15));
         }
 
+        /* Solution Referential Image Preview Container */
+        .project-preview-wrapper {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .project-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-preview-img {
+            transform: scale(1.06);
+        }
+
         .card-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .project-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: var(--radius-md);
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-subtle);
@@ -613,15 +631,15 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 24px;
-            min-height: 72px;
+            margin-bottom: 20px;
+            min-height: 64px;
         }
 
         .project-tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .tech-pill {
@@ -1003,7 +1021,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION WITH CRISP VISIBLE TEXT -->
+    <!-- HERO SECTION WITH HIGH-CONTRAST SOLID TITLES -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -1116,7 +1134,7 @@
         </div>
     </section>
 
-    <!-- SOLUCIONES EMPRESARIALES NOVASOLUM -->
+    <!-- SOLUCIONES EMPRESARIALES NOVASOLUM (CON IMÁGENES PREVIEW REFERENCIALES) -->
     <section class="ecosystem-section" id="soluciones">
         <div class="container">
             <div class="section-header">
@@ -1132,6 +1150,11 @@
                 <!-- 1. NovAI CRM -->
                 <div class="project-card" style="--card-accent: var(--card-crm); --card-border-color: rgba(16, 185, 129, 0.25); --card-glow: rgba(16, 185, 129, 0.2); --card-accent-gradient: linear-gradient(135deg, #10b981, #059669);">
                     <div>
+                        <!-- Referential Image Preview -->
+                        <div class="project-preview-wrapper">
+                            <img src="assets/crm_preview.png" alt="Vista previa Solución CRM & Ventas" class="project-preview-img">
+                        </div>
+
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
@@ -1162,6 +1185,11 @@
                 <!-- 2. GeoNova Gestión -->
                 <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.25); --card-glow: rgba(6, 182, 212, 0.2); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #0284c7);">
                     <div>
+                        <!-- Referential Image Preview -->
+                        <div class="project-preview-wrapper">
+                            <img src="assets/geoweb_preview.png" alt="Vista previa GeoNova Gestión" class="project-preview-img">
+                        </div>
+
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
@@ -1192,6 +1220,11 @@
                 <!-- 3. GeoNova Fichaje -->
                 <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.25); --card-glow: rgba(6, 182, 212, 0.2); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);">
                     <div>
+                        <!-- Referential Image Preview -->
+                        <div class="project-preview-wrapper">
+                            <img src="assets/geoasist_preview.png" alt="Vista previa GeoNova Fichaje" class="project-preview-img">
+                        </div>
+
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="smartphone" style="width: 24px; height: 24px;"></i>
@@ -1222,6 +1255,11 @@
                 <!-- 4. FarmaGo Comercio -->
                 <div class="project-card" style="--card-accent: var(--card-farma); --card-border-color: rgba(236, 72, 153, 0.25); --card-glow: rgba(236, 72, 153, 0.2); --card-accent-gradient: linear-gradient(135deg, #ec4899, #be185d);">
                     <div>
+                        <!-- Referential Image Preview -->
+                        <div class="project-preview-wrapper">
+                            <img src="assets/farmago_preview.png" alt="Vista previa FarmaGo Comercio" class="project-preview-img">
+                        </div>
+
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="shopping-bag" style="width: 24px; height: 24px;"></i>
@@ -1252,6 +1290,11 @@
                 <!-- 5. Simulador Financiero -->
                 <div class="project-card" style="--card-accent: var(--card-sim); --card-border-color: rgba(168, 85, 247, 0.25); --card-glow: rgba(168, 85, 247, 0.2); --card-accent-gradient: linear-gradient(135deg, #a855f7, #7e22ce);">
                     <div>
+                        <!-- Referential Image Preview -->
+                        <div class="project-preview-wrapper">
+                            <img src="assets/simulador_preview.png" alt="Vista previa Simulador Financiero" class="project-preview-img">
+                        </div>
+
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="line-chart" style="width: 24px; height: 24px;"></i>
@@ -1488,7 +1531,7 @@
         </div>
     </footer>
 
-    <!-- JS SCRIPTS & 3D UNIVERSE CANVAS + SMOOTH CINEMATIC WAVE REVEAL -->
+    <!-- JS SCRIPTS & 3D UNIVERSE CANVAS -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -1500,45 +1543,7 @@
         }
 
         /* ==========================================================================
-           1. SMOOTH CINEMATIC WAVE REVEAL ANIMATION (FLUID & 100% VISIBLE)
-           ========================================================================== */
-        function animateTextAssembly(elementId, finalText, delay = 0) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-
-            const words = finalText.split(' ');
-            
-            // Build DOM spans preserving spaces cleanly
-            el.innerHTML = words.map((word) => {
-                const letters = word.split('').map(char => 
-                    `<span class="reveal-char" style="opacity:0; transform:translateY(10px); display:inline-block; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);">${char}</span>`
-                ).join('');
-                return `<span style="display:inline-block; white-space:nowrap;">${letters}</span>`;
-            }).join('<span style="display:inline-block; width:0.3em;"> </span>');
-
-            const spans = el.querySelectorAll('.reveal-char');
-            let idx = 0;
-
-            setTimeout(() => {
-                const timer = setInterval(() => {
-                    if (idx >= spans.length) {
-                        clearInterval(timer);
-                        return;
-                    }
-                    spans[idx].style.opacity = '1';
-                    spans[idx].style.transform = 'translateY(0)';
-                    idx++;
-                }, 25); // Fast, fluid wave reveal
-            }, delay);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            animateTextAssembly('hero-title-1', 'Impulsamos tu crecimiento', 100);
-            animateTextAssembly('hero-title-2', 'con soluciones hechas a tu medida.', 500);
-        });
-
-        /* ==========================================================================
-           2. ENTORNO DUAL: LOCALHOST (PUERTOS) VS PRODUCCIÓN (SOLUCIONES / DOMINIOS)
+           1. ENTORNO DUAL: LOCALHOST (PUERTOS) VS PRODUCCIÓN (SOLUCIONES / DOMINIOS)
            ========================================================================== */
         const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
@@ -1637,7 +1642,7 @@
         }
 
         /* ==========================================================================
-           3. 3D UNIVERSE & CELESTIAL SPACE NAVIGATOR CANVAS
+           2. 3D UNIVERSE & CELESTIAL SPACE NAVIGATOR CANVAS
            ========================================================================== */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
