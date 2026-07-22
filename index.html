@@ -3,1513 +3,1766 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaSolum - Portal Ecosistema Central</title>
-    <!-- Google Fonts: Outfit & Inter -->
+    <title>NovaSolum | Marketing Digital, Automatización & IA a la Medida</title>
+    <meta name="description" content="Agencia líder en Marketing Digital, Automatización de Procesos e Implementación de Inteligencia Artificial mediante soluciones hechas a la medida.">
+    
+    <!-- Favicon & Iconos -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <!-- Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        /* ================= ESTILOS GLOBALES & VARIABLES ================= */
+        /* ==========================================================================
+           OPENAI-INSPIRED DESIGN SYSTEM & VARIABLES
+           ========================================================================== */
         :root {
-            --bg-dark: #06040d;
-            --bg-card: rgba(255, 255, 255, 0.02);
-            --border-glow: rgba(255, 255, 255, 0.06);
-            --text-main: #f8fafc;
-            --text-mute: #94a3b8;
+            --bg-base: #020204;
+            --bg-surface: #07070b;
+            --bg-card: rgba(15, 15, 24, 0.65);
+            --bg-card-hover: rgba(26, 26, 38, 0.85);
             
-            /* Colores de Proyectos */
-            --color-crm: #00ffaa;
-            --color-geo: #00f0ff;
-            --color-farma: #ff007f;
-            --color-sim: #bd00ff;
-            --color-api: #ffaa00;
-            --color-nova: #a855f7;
-            --color-nova-dark: #341645;
+            --border-subtle: rgba(255, 255, 255, 0.07);
+            --border-glow: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            
+            --accent-purple: #a855f7;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-pink: #ec4899;
+            --accent-whatsapp: #25d366;
+            
+            --card-crm: #10b981;
+            --card-geo: #06b6d4;
+            --card-farma: #ec4899;
+            --card-sim: #a855f7;
+            
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
+        /* Reset & Base Styles */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4, .font-outfit {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        /* ================= ELEMENTOS DE FONDO ================= */
-        .glow-sphere {
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.22;
+        /* 3D Universe Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
             pointer-events: none;
         }
-        .sphere-1 {
-            top: -250px;
-            left: -150px;
-            background: radial-gradient(circle, var(--color-nova-dark) 0%, transparent 70%);
-        }
-        .sphere-2 {
-            bottom: -150px;
-            right: -150px;
-            background: radial-gradient(circle, var(--color-nova) 0%, transparent 70%);
-            opacity: 0.12;
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: var(--font-heading);
+            letter-spacing: -0.02em;
         }
 
-        /* ================= HEADER ================= */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            background: rgba(6, 4, 13, 0.75);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-glow);
-            z-index: 100;
-            position: sticky;
-            top: 0;
-        }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--color-nova-dark) 0%, var(--color-nova) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 22px;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
-        }
-
-        .brand-text {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .server-hub-badge {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-glow);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .server-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--color-crm);
-            box-shadow: 0 0 10px var(--color-crm);
-        }
-
-        /* ================= HERO SECTION ================= */
-        .hero {
-            padding: 80px 60px 40px;
-            max-width: 1200px;
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1240px;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 24px;
             position: relative;
             z-index: 10;
         }
 
-        .hero-tag {
+        /* Badges */
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: #d8b4fe;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-geo);
-            margin-bottom: 16px;
-            display: inline-block;
+            letter-spacing: 1.5px;
+        }
+
+        .badge-pill .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-purple);
+            box-shadow: 0 0 10px var(--accent-purple);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: var(--font-main);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.12);
+            color: #4ade80;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            backdrop-filter: blur(12px);
+            font-weight: 700;
+        }
+
+        .btn-whatsapp:hover {
+            background: #25d366;
+            color: #000000;
+            border-color: #25d366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-panel {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--card-border-color, var(--border-subtle));
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-panel:hover {
+            background: var(--card-accent-gradient, linear-gradient(135deg, var(--accent-purple), #6366f1));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 8px 30px var(--card-glow, rgba(168, 85, 247, 0.4));
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           HEADER / NAVBAR
+           ========================================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(2, 2, 4, 0.75);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .brand-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+        }
+
+        .brand-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        .status-pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==========================================================================
+           HERO SECTION WITH CINEMATIC REVEAL ANIMATION
+           ========================================================================== */
+        .hero-section {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero-title {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--text-mute) 100%);
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.08;
+            margin: 24px 0 24px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scramble-line-1 {
+            background: linear-gradient(180deg, #ffffff 20%, rgba(255, 255, 255, 0.75) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-mute);
-            max-width: 750px;
-            margin: 0 auto 32px;
+        .scramble-line-2 {
+            background: linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ================= PROJECTS GRID ================= */
+        /* Sci-Fi Glowing Reveal Cursor */
+        .reveal-char {
+            display: inline-block;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .reveal-cipher {
+            color: var(--accent-purple);
+            text-shadow: 0 0 12px var(--accent-purple);
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 740px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 70px;
+            flex-wrap: wrap;
+        }
+
+        /* Metrics Bar */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(16px);
+            margin-top: 40px;
+        }
+
+        .metric-item {
+            text-align: center;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .metric-item:last-child {
+            border-right: none;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ==========================================================================
+           CORE SERVICES (NUESTROS PILARES)
+           ========================================================================== */
+        .services-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin: 16px 0 16px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            backdrop-filter: blur(16px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon-wrapper {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--service-color, var(--accent-purple));
+        }
+
+        .service-card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .service-card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           SOLUCIONES EMPRESARIALES GRID (HUB PRINCIPAL)
+           ========================================================================== */
+        .ecosystem-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto 80px;
-            padding: 0 60px;
-            z-index: 10;
-            position: relative;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+            margin-top: 50px;
         }
 
         .project-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 30px;
+            border: 1px solid var(--card-border-color, var(--border-subtle));
+            border-radius: var(--radius-lg);
+            padding: 32px;
             backdrop-filter: blur(16px);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .project-card::after {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--card-color, #fff);
-            opacity: 0.8;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent, var(--accent-purple));
+            opacity: 0.85;
         }
 
-        .card-header {
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px var(--card-glow, rgba(168, 85, 247, 0.15));
+        }
+
+        .card-top {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .project-icon-box {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-glow);
-            color: var(--card-color);
+            color: var(--card-accent);
         }
 
-        .status-badge {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
+        .uptime-badge {
             display: flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-glow);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
         }
 
-        .status-dot {
+        .uptime-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background-color: #64748b;
-        }
-        .status-dot.active {
-            background-color: var(--color-crm);
-            box-shadow: 0 0 8px var(--color-crm);
+            background: #64748b;
         }
 
-        .project-title {
+        .uptime-dot.online {
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .project-title-text {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 10px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
-        .project-description {
-            font-size: 14px;
-            color: var(--text-mute);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
+        .project-desc-text {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            min-height: 72px;
         }
 
-        .tech-tags {
+        .project-tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 24px;
+            gap: 8px;
+            margin-bottom: 28px;
         }
 
-        .tech-tag {
+        .tech-pill {
             font-size: 11px;
             font-weight: 600;
-            padding: 4px 8px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 6px;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             color: #cbd5e1;
         }
 
-        .card-footer {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
-            flex-grow: 1;
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.3s;
-        }
-
-        .btn-live {
-            background: var(--card-color);
-            color: #000;
-            border: none;
-        }
-        .btn-live:hover {
-            box-shadow: 0 4px 15px var(--card-color-glow);
-            transform: translateY(-1px);
-        }
-
-        .btn-mock {
-            background: rgba(255,255,255,0.03);
-            color: var(--text-main);
-            border: 1px solid var(--border-glow);
-        }
-        .btn-mock:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        /* ================= IFRAME MODAL ================= */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5,3,10,0.85);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-container {
-            width: 90%;
-            max-width: 1100px;
-            height: 85vh;
-            background: #110d21;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: all 0.3s;
-        }
-        .modal-overlay.active .modal-container {
-            transform: scale(1);
-        }
-
-        .modal-header {
-            padding: 16px 24px;
-            background: rgba(255,255,255,0.02);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header-title {
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-close-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: var(--text-mute);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .modal-close-btn:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .iframe-wrapper {
-            flex-grow: 1;
-            position: relative;
-            background: #000;
-        }
-
-        .iframe-element {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .iframe-fallback-msg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            pointer-events: none;
-            width: 80%;
-        }
-
-        /* ================= MOCKUP CENTER OVERLAY ================= */
-        .mockup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #080612;
-            z-index: 900;
-            display: flex;
-            flex-direction: column;
-            transform: translateX(100%);
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .mockup-overlay.active {
-            transform: translateX(0);
-        }
-
-        .mockup-nav {
-            padding: 16px 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            background: #0d0a1d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .mockup-body {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            overflow-y: auto;
+        /* ==========================================================================
+           FORMULARIO DE CONTACTO & WHATSAPP
+           ========================================================================== */
+        .contact-section {
+            padding: 100px 0;
             position: relative;
         }
 
-        /* Mobile Container Mockup */
-        .phone-frame {
-            width: 320px;
-            height: 640px;
-            border: 10px solid #27272a;
-            border-radius: 36px;
-            background: #0f0c1b;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 20px;
-            background: #27272a;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            z-index: 99;
-        }
-
-        /* Web Container Mockup */
-        .web-frame {
-            width: 100%;
-            max-width: 960px;
-            height: 560px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: #0d0a1b;
-            border-radius: 16px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .web-frame-header {
-            background: rgba(255,255,255,0.03);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .browser-dots {
-            display: flex;
-            gap: 6px;
-        }
-        .browser-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4b5563;
-        }
-
-        .browser-address {
-            flex-grow: 1;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 6px;
-            padding: 4px 12px;
-            font-size: 11px;
-            color: var(--text-mute);
-            font-family: monospace;
-        }
-
-        /* Mockup Contents */
-        .mock-content-wrapper {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            padding: 24px;
-        }
-
-        /* 1. CRM Mock Screen */
-        .crm-login-view {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            gap: 16px;
-        }
-        .crm-login-box {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 30px;
-            width: 100%;
-            max-width: 360px;
-            backdrop-filter: blur(10px);
-        }
-        .crm-input-group {
-            margin-bottom: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .crm-input {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 10px 14px;
-            border-radius: 8px;
-            color: #fff;
-            outline: none;
-            font-size: 13px;
-        }
-        .crm-input:focus {
-            border-color: var(--color-crm);
-        }
-
-        /* CRM Dashboard View */
-        .crm-dashboard-view {
-            display: none;
-            flex-direction: column;
-            gap: 16px;
-            height: 100%;
-        }
-
-        /* 2. Geo Web Mock */
-        .geo-web-layout {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            height: 100%;
-            overflow: hidden;
-        }
-        .geo-sidebar {
-            border-right: 1px solid rgba(255,255,255,0.08);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: rgba(255,255,255,0.01);
-        }
-        .geo-map-area {
-            position: relative;
-            background: #110d21;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
-            background-size: 20px 20px;
-            overflow: hidden;
-        }
-        .map-pin {
-            position: absolute;
-            color: var(--color-geo);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: all 0.5s;
-        }
-
-        /* 3. Geo Asist Mobile Mock */
-        .mobile-header {
-            padding: 30px 16px 12px;
-            background: #120e24;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            text-align: center;
-        }
-        .mobile-body {
-            flex-grow: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .gps-circle {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 240, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .gps-circle-inner {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: rgba(0, 240, 255, 0.05);
-            border: 2px solid var(--color-geo);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .gps-circle-inner:active {
-            transform: scale(0.95);
-            background: rgba(0, 240, 255, 0.15);
-        }
-
-        /* 4. FarmaGo Mock */
-        .farma-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-        }
-        .farma-prod-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        /* 5. Simulador Mock */
-        .sim-control-panel {
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 40px;
+            align-items: start;
         }
-        .sim-slider-group {
+
+        .contact-info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-form-card {
+            background: linear-gradient(135deg, rgba(20, 20, 32, 0.8) 0%, rgba(12, 12, 20, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-select option {
+            background: #09090e;
+            color: #fff;
+        }
+
+        .wpp-direct-box {
+            margin-top: 30px;
+            padding: 24px;
+            background: rgba(37, 211, 102, 0.06);
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            border-radius: var(--radius-md);
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background: rgba(255,255,255,0.02);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-        .range-slider {
-            width: 100%;
-            accent-color: var(--color-sim);
         }
 
-        /* ================= FLOATING CTA ================= */
-        .floating-cta {
+        /* Floating WhatsApp Button */
+        .floating-wpp {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            color: #fff;
-            padding: 14px 24px;
-            border-radius: 30px;
+            z-index: 9999;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            padding: 12px 20px;
+            background: #25d366;
+            color: #000000;
+            border-radius: var(--radius-full);
             text-decoration: none;
-            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 2100;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 14px;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
         }
-        .floating-cta:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+
+        .floating-wpp:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+            background: #22c55e;
         }
-        .floating-cta span {
-            letter-spacing: 0.5px;
+
+        .floating-wpp-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* CALCULATOR ROI SECTION */
+        .calculator-section {
+            padding: 80px 0;
+            margin: 40px 0;
+        }
+
+        .calc-wrapper {
+            background: linear-gradient(135deg, rgba(24, 24, 38, 0.7) 0%, rgba(10, 10, 18, 0.9) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            backdrop-filter: blur(20px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .calc-info h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .calc-info p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .calc-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 30px;
+        }
+
+        .calc-field {
+            margin-bottom: 20px;
+        }
+
+        .calc-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .calc-slider {
+            width: 100%;
+            height: 6px;
+            background: #1e1e2e;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-purple);
+        }
+
+        .calc-result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .calc-res-card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: var(--radius-md);
+        }
+
+        .calc-res-num {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--accent-emerald);
+        }
+
+        .calc-res-lbl {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(2, 2, 4, 0.95);
+            padding: 60px 0 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 16px;
+            max-width: 320px;
+        }
+
+        .footer-col-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-tertiary);
+            font-size: 13px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 48px; min-height: auto; }
+            .services-grid { grid-template-columns: 1fr; }
+            .calc-wrapper { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .metric-item { border-right: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 34px; }
+            .hero-subtitle { font-size: 16px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Glows -->
-    <div class="glow-sphere sphere-1"></div>
-    <div class="glow-sphere sphere-2"></div>
+    <!-- 3D Universe & Celestial Space Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
 
-    <!-- Header -->
+    <!-- FLOATING WHATSAPP BUTTON WITH EXACT SPECIFIED PHONE & TEXT -->
+    <a href="https://wa.me/59179691952?text=%C2%A1Hola%2C%20puede%20brindarme%20informaci%C3%B3n%20sobre%20las%20soluciones%20de%20NovaSolum%21" id="floating-wpp-link" target="_blank" class="floating-wpp">
+        <svg class="floating-wpp-icon" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Hablar por WhatsApp</span>
+    </a>
+
+    <!-- HEADER / NAVIGATION -->
     <header>
-        <div class="brand-container">
-            <div class="brand-logo">N</div>
-            <span class="brand-text">NovaSolum Business Suite</span>
-        </div>
-        <div class="server-hub-badge">
-            <div class="server-status-dot"></div>
-            <span>Ecosistema Empresarial NovaSolum</span>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo-container">
+                    <img src="assets/logo.png" alt="NovaSolum Logo" class="brand-img" onerror="this.src='assets/logo.jpg'">
+                    <div class="brand-title">NovaSolum</div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#servicios" class="nav-link">Servicios IA</a></li>
+                    <li><a href="#soluciones" class="nav-link">Soluciones Empresariales</a></li>
+                    <li><a href="#calculadora" class="nav-link">Calculadora ROI</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto & WhatsApp</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="status-pill">
+                        <div class="status-pill-dot"></div>
+                        <span>Ecosistema de Soluciones Online</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <span class="hero-tag" style="color: #c084fc; font-weight: 800; letter-spacing: 4px;">Ecosistema de Crecimiento Empresarial</span>
-        <h1 class="hero-title" style="background: linear-gradient(135deg, #ffffff 30%, #a855f7 70%, #341645 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 58px; font-weight: 800; line-height: 1.1; margin-bottom: 20px;">Digitaliza y Automatiza tu Empresa</h1>
-        <p class="hero-subtitle" style="max-width: 850px; font-size: 19px; line-height: 1.7; margin-bottom: 40px; color: var(--text-mute);">
-            Controla y expande tu negocio desde un solo lugar. En <strong>NovaSolum</strong> convertimos los problemas operativos m├ís comunes en flujos de trabajo 100% automatizados. Ahorra tiempo, gestiona a tu personal y toma decisiones basadas en datos con herramientas dise├▒adas exclusivamente para el crecimiento de tu empresa.
-            <br><span style="color: #cbd5e1; font-weight: 500;">Todo integrado en un solo ecosistema empresarial intuitivo, listo para usar y sin requerir conocimientos t├⌐cnicos.</span>
-        </p>
+    <!-- HERO SECTION WITH CINEMATIC REVEAL ANIMATION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge-pill" id="hero-badge">
+                    <div class="dot"></div>
+                    <span>Inteligencia Artificial & Automatización</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="scramble-line-1" id="hero-title-1">Impulsamos tu Agencia y Empresa con</span>
+                    <span class="scramble-line-2" id="hero-title-2">Aplicaciones con IA a la Medida</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    En <strong>NovaSolum</strong> integramos estrategias avanzadas de Marketing Digital con arquitecturas de Inteligencia Artificial para automatizar tus operaciones, multiplicar tus ventas y eliminar tareas repetitivas.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#soluciones" class="btn btn-primary">
+                        <i data-lucide="layout-grid" style="width: 18px; height: 18px;"></i>
+                        Explorar Soluciones Empresariales
+                    </a>
+                    <a href="https://wa.me/59179691952?text=%C2%A1Hola%2C%20puede%20brindarme%20informaci%C3%B3n%20sobre%20las%20soluciones%20de%20NovaSolum%21" target="_blank" class="btn btn-whatsapp">
+                        <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+                        Contacto por WhatsApp
+                    </a>
+                </div>
+
+                <!-- Metrics Bar -->
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-value">99.9%</div>
+                        <div class="metric-label">Uptime Servidores</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">+4.5x</div>
+                        <div class="metric-label">Eficiencia Operativa</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">5+</div>
+                        <div class="metric-label">Soluciones Integradas</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">0%</div>
+                        <div class="metric-label">Trabajo Manual Repetitivo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Grid de Proyectos (Ecosistema / Acceso a Clientes) -->
-    <h2 class="font-outfit" style="text-align: center; margin-bottom: 40px; font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #ffffff 50%, var(--color-nova) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-        Hub de Soluciones Empresariales
-    </h2>
+    <!-- SERVICIOS DE LA AGENCIA -->
+    <section class="services-section" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill">Nuestra Especialidad</div>
+                <h2 class="section-title">Servicios & Soluciones para Escalar</h2>
+                <p class="section-subtitle">Combinamos desarrollo de código de vanguardia con modelos de Inteligencia Artificial aplicados directamente al crecimiento de tu negocio.</p>
+            </div>
 
-    <section class="projects-grid">
-        
-        <!-- 1. CRM -->
-        <div class="project-card" style="--card-color: var(--color-crm); --card-color-glow: rgba(0, 255, 170, 0.2); border-color: rgba(0, 255, 170, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="shield-check"></i>
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card" style="--service-color: #38bdf8;">
+                    <div class="service-icon-wrapper">
+                        <i data-lucide="trending-up" style="width: 26px; height: 26px;"></i>
                     </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-4001"></div>
-                        <span id="status-text-4001">Cargando estado...</span>
+                    <h3 class="service-card-title">Marketing Digital con IA</h3>
+                    <p class="service-card-desc">
+                        Optimización continua de campañas publicitarias mediante algoritmos predictivos, prospección inteligente de leads y contenidos personalizados para maximizar el ROI.
+                    </p>
+                    <div class="service-tags">
+                        <span class="service-tag">Ads Predictivos</span>
+                        <span class="service-tag">Captura de Leads</span>
+                        <span class="service-tag">Analytics</span>
                     </div>
                 </div>
-                <h3 class="project-title" style="color: #fff;">NovAI CRM</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Cierra m├ís tratos y no pierdas el seguimiento de ning├║n cliente.</strong> Gestiona tus relaciones comerciales de forma eficiente, controla cotizaciones y mant├⌐n el registro unificado de tus clientes para maximizar tus ventas y ahorrar tiempo.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Automatizaci├│n de Ventas</span>
-                    <span class="tech-tag">Gesti├│n de Clientes</span>
-                    <span class="tech-tag">Control de Oportunidades</span>
-                    <span class="tech-tag">Reportes de Negocio</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="btn btn-live" onclick="launchLiveDemo(4001)" style="flex: 1;">
-                        <i data-lucide="play" style="width: 14px; height: 14px;"></i> Acceso Demo
-                    </button>
-                    <button class="btn btn-mock" onclick="openMockup('crm')" style="flex: 1;">
-                        <i data-lucide="monitor" style="width: 14px; height: 14px;"></i> Ver Simulador
-                    </button>
-                </div>
-                <a href="http://localhost:4001" target="_blank" class="btn btn-mock" style="width: 100%; border-color: rgba(0, 255, 170, 0.4); color: var(--color-crm); text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; transition: all 0.3s;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Ingresar al Panel
-                </a>
-            </div>
-        </div>
 
-        <!-- 2. Geo Web -->
-        <div class="project-card" style="--card-color: var(--color-geo); --card-color-glow: rgba(0, 240, 255, 0.2); border-color: rgba(0, 240, 255, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="map-pin"></i>
+                <!-- Servicio 2 -->
+                <div class="service-card" style="--service-color: #a855f7;">
+                    <div class="service-icon-wrapper">
+                        <i data-lucide="workflow" style="width: 26px; height: 26px;"></i>
                     </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-4002"></div>
-                        <span id="status-text-4002">Cargando estado...</span>
+                    <h3 class="service-card-title">Automatización de Procesos</h3>
+                    <p class="service-card-desc">
+                        Diseño y ejecución de flujos de trabajo autónomos. Orquestamos tu CRM, facturación, monitoreo geográfico e inventario sin intervención humana.
+                    </p>
+                    <div class="service-tags">
+                        <span class="service-tag">Workflows n8n/Make</span>
+                        <span class="service-tag">Integración API</span>
+                        <span class="service-tag">Zero-Touch Ops</span>
                     </div>
                 </div>
-                <h3 class="project-title" style="color: #fff;">GeoNova Gesti├│n</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Monitorea a tus equipos y optimiza sus operaciones en tiempo real.</strong> Valida el cumplimiento de rutas, visualiza ubicaciones en vivo y toma decisiones basadas en datos geogr├íficos precisos para maximizar la eficiencia.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Geolocalizaci├│n en Vivo</span>
-                    <span class="tech-tag">Optimizaci├│n de Rutas</span>
-                    <span class="tech-tag">Mapas Interactivos</span>
-                    <span class="tech-tag">Control de Cuadrillas</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="btn btn-live" onclick="launchLiveDemo(4002)" style="flex: 1;">
-                        <i data-lucide="play" style="width: 14px; height: 14px;"></i> Acceso Demo
-                    </button>
-                    <button class="btn btn-mock" onclick="openMockup('geoweb')" style="flex: 1;">
-                        <i data-lucide="monitor" style="width: 14px; height: 14px;"></i> Ver Simulador
-                    </button>
-                </div>
-                <a href="http://localhost:4002" target="_blank" class="btn btn-mock" style="width: 100%; border-color: rgba(0, 240, 255, 0.4); color: var(--color-geo); text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; transition: all 0.3s;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Ingresar al Panel
-                </a>
-            </div>
-        </div>
 
-        <!-- 3. Geo Asistencia -->
-        <div class="project-card" style="--card-color: var(--color-geo); --card-color-glow: rgba(0, 240, 255, 0.2); border-color: rgba(0, 240, 255, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="smartphone"></i>
+                <!-- Servicio 3 -->
+                <div class="service-card" style="--service-color: #10b981;">
+                    <div class="service-icon-wrapper">
+                        <i data-lucide="cpu" style="width: 26px; height: 26px;"></i>
                     </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-4003"></div>
-                        <span id="status-text-4003">Cargando estado...</span>
+                    <h3 class="service-card-title">Apps IA Hechas a la Medida</h3>
+                    <p class="service-card-desc">
+                        Plataformas web, dashboards ejecutivos, chatbots con RAG e interfaces personalizadas según la arquitectura exacta que tu empresa requiera.
+                    </p>
+                    <div class="service-tags">
+                        <span class="service-tag">Sistemas Web .NET/Node</span>
+                        <span class="service-tag">Agentes de IA</span>
+                        <span class="service-tag">Dashboards</span>
                     </div>
-                </div>
-                <h3 class="project-title" style="color: #fff;">GeoNova Fichaje</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Controla la asistencia de tu personal en campo de forma infalible.</strong> Permite que tus empleados registren su entrada y salida desde su m├│vil de forma r├ípida y segura, ahorrando tiempo en gesti├│n de n├│minas.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Fichaje M├│vil</span>
-                    <span class="tech-tag">Reconocimiento Facial</span>
-                    <span class="tech-tag">Seguridad Anti-fraude</span>
-                    <span class="tech-tag">Asistencia Autom├ítica</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="btn btn-live" onclick="launchLiveDemo(4003)" style="flex: 1;">
-                        <i data-lucide="play" style="width: 14px; height: 14px;"></i> Acceso Demo
-                    </button>
-                    <button class="btn btn-mock" onclick="openMockup('geoasist')" style="flex: 1;">
-                        <i data-lucide="smartphone" style="width: 14px; height: 14px;"></i> Ver Simulador
-                    </button>
-                </div>
-                <a href="http://localhost:4003" target="_blank" class="btn btn-mock" style="width: 100%; border-color: rgba(0, 240, 255, 0.4); color: var(--color-geo); text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; transition: all 0.3s;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Ingresar al Panel
-                </a>
-            </div>
-        </div>
-
-        <!-- 4. FarmaNova -->
-        <div class="project-card" style="--card-color: var(--color-farma); --card-color-glow: rgba(255, 0, 127, 0.2); border-color: rgba(255, 0, 127, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="shopping-bag"></i>
-                    </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-4004"></div>
-                        <span id="status-text-4004">Cargando estado...</span>
-                    </div>
-                </div>
-                <h3 class="project-title" style="color: #fff;">FarmaGo Comercio</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Lleva tus productos al canal de ventas digital 24/7 de forma autom├ítica.</strong> Cat├ílogo automatizado en l├¡nea, sincronizaci├│n de stock al instante y pasarela de pago fluida para tus clientes.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Tienda Virtual</span>
-                    <span class="tech-tag">Control de Inventario</span>
-                    <span class="tech-tag">Cobro Automatizado</span>
-                    <span class="tech-tag">Sincronizaci├│n Web</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="btn btn-live" onclick="launchLiveDemo(4004)" style="flex: 1;">
-                        <i data-lucide="play" style="width: 14px; height: 14px;"></i> Acceso Demo
-                    </button>
-                    <button class="btn btn-mock" onclick="openMockup('farmago')" style="flex: 1;">
-                        <i data-lucide="monitor" style="width: 14px; height: 14px;"></i> Ver Simulador
-                    </button>
-                </div>
-                <a href="http://localhost:4004" target="_blank" class="btn btn-mock" style="width: 100%; border-color: rgba(255, 0, 127, 0.4); color: var(--color-farma); text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; transition: all 0.3s;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Ingresar al Panel
-                </a>
-            </div>
-        </div>
-
-        <!-- 5. Simulador Comercial -->
-        <div class="project-card" style="--card-color: var(--color-sim); --card-color-glow: rgba(189, 0, 255, 0.2); border-color: rgba(189, 0, 255, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="bar-chart-3"></i>
-                    </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-4005"></div>
-                        <span id="status-text-4005">Cargando estado...</span>
-                    </div>
-                </div>
-                <h3 class="project-title" style="color: #fff;">Simulador Financiero</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Toma decisiones basadas en datos y proyecta tus ganancias.</strong> Eval├║a metas comerciales, simula m├írgenes variando precios de venta y planifica tu rentabilidad en segundos antes de invertir.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Simulador de Precios</span>
-                    <span class="tech-tag">Proyecci├│n Financiera</span>
-                    <span class="tech-tag">An├ílisis de Cobertura</span>
-                    <span class="tech-tag">Planeaci├│n de Ganancias</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="btn btn-live" onclick="launchLiveDemo(4005)" style="flex: 1;">
-                        <i data-lucide="play" style="width: 14px; height: 14px;"></i> Acceso Demo
-                    </button>
-                    <button class="btn btn-mock" onclick="openMockup('simulador')" style="flex: 1;">
-                        <i data-lucide="monitor" style="width: 14px; height: 14px;"></i> Ver Simulador
-                    </button>
-                </div>
-                <a href="http://localhost:4005" target="_blank" class="btn btn-mock" style="width: 100%; border-color: rgba(189, 0, 255, 0.4); color: var(--color-sim); text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; transition: all 0.3s;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Ingresar al Panel
-                </a>
-            </div>
-        </div>
-
-        <!-- 6. FarmaNova API (Backend) -->
-        <div class="project-card" style="--card-color: var(--color-api); --card-color-glow: rgba(255, 170, 0, 0.2); border-color: rgba(255, 170, 0, 0.15);">
-            <div>
-                <div class="card-header">
-                    <div class="project-icon-box">
-                        <i data-lucide="database"></i>
-                    </div>
-                    <div class="status-badge">
-                        <div class="status-dot" id="dot-5169"></div>
-                        <span id="status-text-5169">Cargando estado...</span>
-                    </div>
-                </div>
-                <h3 class="project-title" style="color: #fff;">Core de Integraci├│n</h3>
-                <p class="project-description" style="font-size: 14px; line-height: 1.6; min-height: 80px;">
-                    <strong>Motor de datos y seguridad empresarial.</strong> Procesa y centraliza todas las operaciones en tiempo real, garantizando la seguridad de tu informaci├│n y la conectividad de los m├│dulos.
-                </p>
-                <div class="tech-tags" style="margin-bottom: 20px;">
-                    <span class="tech-tag">Servidor de Datos Central</span>
-                    <span class="tech-tag">Sincronizaci├│n en la Nube</span>
-                    <span class="tech-tag">Seguridad Encriptada</span>
-                    <span class="tech-tag">M├│dulos Integrados</span>
-                </div>
-            </div>
-            <div class="card-footer" style="display: flex; flex-direction: column; gap: 8px;">
-                <a href="http://localhost:5169/swagger" target="_blank" class="btn btn-live" style="background: var(--color-api); color: #000; text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; width: 100%;">
-                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> Panel de Control API
-                </a>
-                <div style="font-size: 11px; color: var(--text-mute); text-align: center; margin-top: 4px;">
-                    Motor central de seguridad y almacenamiento de datos
                 </div>
             </div>
         </div>
-
     </section>
 
-    <!-- Iframe Live Demo Modal -->
-    <div class="modal-overlay" id="liveDemoModal">
-        <div class="modal-container">
-            <div class="modal-header">
-                <div class="modal-header-title">
-                    <i data-lucide="globe" style="color: var(--color-geo);"></i>
-                    <span id="liveModalTitle">Demo en Vivo - Ecosistema NovaSolum</span>
+    <!-- SOLUCIONES EMPRESARIALES NOVASOLUM (HUB PRINCIPAL DE ACCESOS CLEAN - SIN RUTAS LOCALES) -->
+    <section class="ecosystem-section" id="soluciones">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); color: #34d399;">
+                    Ecosistema de Soluciones
                 </div>
-                <button class="modal-close-btn" onclick="closeLiveDemo()">
-                    <i data-lucide="x" style="width: 16px; height: 16px;"></i>
-                </button>
+                <h2 class="section-title">Soluciones Empresariales NovaSolum</h2>
+                <p class="section-subtitle">Ingresa directamente a cada una de nuestras soluciones especializadas para administrar tus ventas, equipos, comercio y simulaciones operativas.</p>
             </div>
-            <div class="iframe-wrapper">
-                <div class="iframe-fallback-msg">
-                    <i data-lucide="terminal" style="width: 48px; height: 48px; color: var(--text-mute); margin-bottom: 12px; display: inline-block;"></i>
-                    <h3 class="font-outfit" style="margin-bottom: 8px;">Conectando con el Servidor Local...</h3>
-                    <p style="color: var(--text-mute); font-size: 14px;">Si la pantalla se mantiene en blanco, verifica que has levantado el ecosistema ejecutando el script <code>iniciar_ecosistema.bat</code> desde la consola.</p>
+
+            <div class="projects-grid">
+                
+                <!-- 1. NovAI CRM -->
+                <div class="project-card" style="--card-accent: var(--card-crm); --card-border-color: rgba(16, 185, 129, 0.2); --card-glow: rgba(16, 185, 129, 0.15); --card-accent-gradient: linear-gradient(135deg, #10b981, #059669);">
+                    <div>
+                        <div class="card-top">
+                            <div class="project-icon">
+                                <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="uptime-badge">
+                                <div class="uptime-dot" id="dot-crm"></div>
+                                <span id="status-text-crm">Consultando...</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title-text">Solución CRM & Ventas</h3>
+                        <p class="project-desc-text">
+                            Gestión unificada de clientes, pipeline de ventas en tiempo real, seguimiento automatizado de oportunidades y generación de cotizaciones empresariales.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-pill">Gestión de Clientes</span>
+                            <span class="tech-pill">Ventas Automatizadas</span>
+                            <span class="tech-pill">Pipeline IA</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="link-crm" href="https://crm.novasolum.cloud" target="_blank" class="btn btn-panel">
+                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            Ingresar a la Solución CRM
+                        </a>
+                    </div>
                 </div>
-                <iframe class="iframe-element" id="liveDemoIframe"></iframe>
+
+                <!-- 2. GeoNova Gestión -->
+                <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.2); --card-glow: rgba(6, 182, 212, 0.15); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #0284c7);">
+                    <div>
+                        <div class="card-top">
+                            <div class="project-icon">
+                                <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="uptime-badge">
+                                <div class="uptime-dot" id="dot-geo"></div>
+                                <span id="status-text-geo">Consultando...</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title-text">Solución GeoNova Gestión</h3>
+                        <p class="project-desc-text">
+                            Plataforma de monitoreo y geolocalización en tiempo real. Optimización de rutas operativas, supervisión de cuadrillas y mapas interactivos.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-pill">Monitoreo GPS</span>
+                            <span class="tech-pill">Control de Rutas</span>
+                            <span class="tech-pill">Mapa Interactivo</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="link-geoweb" href="https://geo.novasolum.cloud" target="_blank" class="btn btn-panel">
+                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            Ingresar a GeoNova Gestión
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. GeoNova Fichaje -->
+                <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.2); --card-glow: rgba(6, 182, 212, 0.15); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);">
+                    <div>
+                        <div class="card-top">
+                            <div class="project-icon">
+                                <i data-lucide="smartphone" style="width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="uptime-badge">
+                                <div class="uptime-dot" id="dot-fichaje"></div>
+                                <span id="status-text-fichaje">Consultando...</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title-text">Solución GeoNova Fichaje</h3>
+                        <p class="project-desc-text">
+                            Sistema móvil de fichaje y control de asistencia para personal externo o en campo. Validación de ubicación geográfica e identidad segura.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-pill">Fichaje Móvil</span>
+                            <span class="tech-pill">Validación Geofence</span>
+                            <span class="tech-pill">Control Asistencia</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="link-geoasist" href="https://fichaje.novasolum.cloud" target="_blank" class="btn btn-panel">
+                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            Ingresar a GeoNova Fichaje
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. FarmaGo Comercio -->
+                <div class="project-card" style="--card-accent: var(--card-farma); --card-border-color: rgba(236, 72, 153, 0.2); --card-glow: rgba(236, 72, 153, 0.15); --card-accent-gradient: linear-gradient(135deg, #ec4899, #be185d);">
+                    <div>
+                        <div class="card-top">
+                            <div class="project-icon">
+                                <i data-lucide="shopping-bag" style="width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="uptime-badge">
+                                <div class="uptime-dot" id="dot-farmago"></div>
+                                <span id="status-text-farmago">Consultando...</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title-text">Solución FarmaGo Comercio</h3>
+                        <p class="project-desc-text">
+                            Portal e-Commerce automatizado para el sector farmacéutico. Sincronización en tiempo real de inventarios, pedidos digitales y catálogo inteligente.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-pill">Tienda Digital</span>
+                            <span class="tech-pill">Sync Stock</span>
+                            <span class="tech-pill">Pasarela Pagos</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="link-farmago" href="https://farmago.novasolum.cloud" target="_blank" class="btn btn-panel">
+                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            Ingresar a FarmaGo Comercio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Simulador Financiero -->
+                <div class="project-card" style="--card-accent: var(--card-sim); --card-border-color: rgba(168, 85, 247, 0.2); --card-glow: rgba(168, 85, 247, 0.15); --card-accent-gradient: linear-gradient(135deg, #a855f7, #7e22ce);">
+                    <div>
+                        <div class="card-top">
+                            <div class="project-icon">
+                                <i data-lucide="line-chart" style="width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="uptime-badge">
+                                <div class="uptime-dot" id="dot-simulador"></div>
+                                <span id="status-text-simulador">Consultando...</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title-text">Solución Simulador Financiero</h3>
+                        <p class="project-desc-text">
+                            Herramienta de simulación comercial y financiera. Modela variaciones de precio de venta, proyecta márgenes y calcula puntos de equilibrio.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span class="tech-pill">Proyección Ganancias</span>
+                            <span class="tech-pill">Simulación Precios</span>
+                            <span class="tech-pill">Análisis Cobertura</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="link-simulador" href="https://simulador.novasolum.cloud" target="_blank" class="btn btn-panel">
+                            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+                            Ingresar al Simulador
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Interactive Mockup Center Overlay -->
-    <div class="mockup-overlay" id="mockupOverlay">
-        <div class="mockup-nav">
-            <div class="brand-container">
-                <div class="brand-logo" id="mockupLogo">N</div>
-                <span class="brand-text" id="mockupNavTitle">Simulador Interactivo NovaSolum</span>
+    <!-- CALCULATOR ROI SECTION -->
+    <section class="calculator-section" id="calculadora">
+        <div class="container">
+            <div class="calc-wrapper">
+                <div class="calc-info">
+                    <div class="badge-pill">Calculadora de Impacto</div>
+                    <h3 style="margin-top: 14px;">Calcula el Ahorro de tu Empresa con IA</h3>
+                    <p>Evalúa cuántas horas de trabajo manual repetitivo y costos operativos puedes convertir en margen neto implementando las soluciones de NovaSolum.</p>
+                    
+                    <div style="display: flex; gap: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                            <i data-lucide="check-circle-2" style="color: var(--accent-emerald); width: 18px; height: 18px;"></i>
+                            Despliegue en días
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                            <i data-lucide="check-circle-2" style="color: var(--accent-emerald); width: 18px; height: 18px;"></i>
+                            Sin interrumpir operaciones
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-box">
+                    <div class="calc-field">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span class="calc-label">Horas semanales en tareas manuales</span>
+                            <span id="calc-hours-val" style="font-weight: 700; color: #fff;">40 hrs</span>
+                        </div>
+                        <input type="range" min="10" max="200" value="40" class="calc-slider" id="calc-hours" oninput="updateCalculator()">
+                    </div>
+
+                    <div class="calc-field">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span class="calc-label">Integrantes en tu equipo operativo</span>
+                            <span id="calc-team-val" style="font-weight: 700; color: #fff;">5 personas</span>
+                        </div>
+                        <input type="range" min="1" max="50" value="5" class="calc-slider" id="calc-team" oninput="updateCalculator()">
+                    </div>
+
+                    <div class="calc-result-grid">
+                        <div class="calc-res-card">
+                            <div class="calc-res-num" id="res-hours-saved">640 hrs</div>
+                            <div class="calc-res-lbl">Ahorradas al Mes</div>
+                        </div>
+                        <div class="calc-res-card">
+                            <div class="calc-res-num" id="res-roi" style="color: var(--accent-cyan);">+380%</div>
+                            <div class="calc-res-lbl">ROI Proyectado</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button class="modal-close-btn" onclick="closeMockup()">
-                <i data-lucide="x" style="width: 16px; height: 16px;"></i>
-            </button>
         </div>
-        <div class="mockup-body" id="mockupBody">
-            <!-- Dynamic mockup content generated by JS -->
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO & CANAL DIRECTO DE WHATSAPP -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill">Hablemos de tu Proyecto</div>
+                <h2 class="section-title">Contáctanos & Solicitá tu Diagnóstico IA</h2>
+                <p class="section-subtitle">Déjanos un mensaje o chatea directamente con nuestros ingenieros para proyectar las soluciones de tu empresa.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Tarjeta de Información & WhatsApp -->
+                <div class="contact-info-card">
+                    <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 16px;">Transformemos tus Operaciones</h3>
+                    <p style="color: var(--text-secondary); font-size: 15px; margin-bottom: 28px; line-height: 1.6;">
+                        Diseñamos soluciones que reducen tus costos, maximizan la eficiencia de tus empleados y capturan clientes de forma automática.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-purple);">
+                                <i data-lucide="map-pin" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">Ubicación Principal</div>
+                                <div style="font-weight: 600; color: var(--text-primary);">Santa Cruz, Bolivia</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan);">
+                                <i data-lucide="globe" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">Portal Principal</div>
+                                <div style="font-weight: 600; color: var(--text-primary);">novasolum.cloud</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Contact Box -->
+                    <div class="wpp-direct-box">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="message-circle" style="color: var(--accent-whatsapp); width: 24px; height: 24px;"></i>
+                            <span style="font-weight: 700; color: #fff; font-size: 16px;">Atención Rápida por WhatsApp</span>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            ¿Prefieres una respuesta inmediata? Haz clic abajo para iniciar una conversación con nuestro equipo técnico.
+                        </p>
+                        <a href="https://wa.me/59179691952?text=%C2%A1Hola%2C%20puede%20brindarme%20informaci%C3%B3n%20sobre%20las%20soluciones%20de%20NovaSolum%21" id="direct-wpp-btn" target="_blank" class="btn btn-whatsapp" style="width: 100%; text-align: center; margin-top: 6px;">
+                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                            Enviar mensaje directo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Formulario de Contacto -->
+                <div class="contact-form-card">
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 20px;">Envíanos tu Consulta</h3>
+
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="form-name">Nombre Completo *</label>
+                            <input type="text" id="form-name" class="form-input" placeholder="Ej: Carlos Gutiérrez" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label class="form-label" for="form-email">Correo Electrónico *</label>
+                                <input type="email" id="form-email" class="form-input" placeholder="carlos@empresa.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="form-phone">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="form-phone" class="form-input" placeholder="+591 79691952" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="form-service">Solución de Interés</label>
+                            <select id="form-service" class="form-select">
+                                <option value="Marketing Digital con IA">Marketing Digital con IA</option>
+                                <option value="Automatización de Procesos">Automatización de Procesos & Workflows</option>
+                                <option value="Desarrollo de Apps IA a Medida">Desarrollo de Apps IA a la Medida</option>
+                                <option value="Solución CRM & Ventas">Solución CRM & Ventas</option>
+                                <option value="Diagnóstico General de Empresa">Diagnóstico General de Empresa</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="form-message">Mensaje / Requerimientos</label>
+                            <textarea id="form-message" class="form-textarea" rows="4" placeholder="Cuéntanos brevemente sobre los procesos o ventas que deseas mejorar..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                            Enviar Formulario & Abrir WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Success Copy Toast -->
-    <div class="toast" id="portalToast" style="position: fixed; bottom: 30px; right: 30px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgb(16, 185, 129); color: #34d399; padding: 12px 20px; border-radius: 12px; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 8px; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 2000;">
-        <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
-        <span id="portalToastMsg">Copiado al portapapeles</span>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo-container">
+                        <img src="assets/logo.png" alt="NovaSolum Logo" class="brand-img" onerror="this.src='assets/logo.jpg'">
+                        <div class="brand-title">NovaSolum</div>
+                    </a>
+                    <p>Agencia líder en Marketing Digital, Automatización de Procesos y Desarrollo de Sistemas con Inteligencia Artificial a la medida.</p>
+                </div>
 
-    <!-- Script de L├│gica -->
+                <div>
+                    <h4 class="footer-col-title">Soluciones Empresariales</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://crm.novasolum.cloud" id="foot-crm" target="_blank" class="footer-link">Solución CRM</a></li>
+                        <li><a href="https://geo.novasolum.cloud" id="foot-geo" target="_blank" class="footer-link">GeoNova Gestión</a></li>
+                        <li><a href="https://fichaje.novasolum.cloud" id="foot-fichaje" target="_blank" class="footer-link">GeoNova Fichaje</a></li>
+                        <li><a href="https://farmago.novasolum.cloud" id="foot-farmago" target="_blank" class="footer-link">FarmaGo Comercio</a></li>
+                        <li><a href="https://simulador.novasolum.cloud" id="foot-simulador" target="_blank" class="footer-link">Simulador Financiero</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicios" class="footer-link">Marketing Digital IA</a></li>
+                        <li><a href="#servicios" class="footer-link">Automatización Workflows</a></li>
+                        <li><a href="#servicios" class="footer-link">Desarrollo a la Medida</a></li>
+                        <li><a href="#contacto" class="footer-link">Consultoría Técnica</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contacto</h4>
+                    <ul class="footer-links">
+                        <li><span class="footer-link">Santa Cruz - Bolivia</span></li>
+                        <li><span class="footer-link">novasolum.cloud</span></li>
+                        <li><a href="https://wa.me/59179691952?text=%C2%A1Hola%2C%20puede%20brindarme%20informaci%C3%B3n%20sobre%20las%20soluciones%20de%20NovaSolum%21" target="_blank" class="footer-link" style="color: var(--accent-whatsapp); font-weight: 600;">Contacto por WhatsApp →</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 NovaSolum Business Suite. Todos los derechos reservados.</div>
+                <div>novasolum.cloud</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS SCRIPTS & 3D UNIVERSE CANVAS + CINEMATIC TEXT REVEAL -->
     <script>
-        // Init Icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // 1. Detecci├│n Din├ímica de Puertos Online/Offline
-        const portsToCheck = [4001, 4002, 4003, 4004, 4005, 5169];
-        
-        function checkLocalhostPorts() {
-            portsToCheck.forEach(port => {
-                // Hacer una petici├│n ligera a localhost en el puerto correspondiente
-                fetch(`http://localhost:${port}`, { mode: 'no-cors', cache: 'no-store' })
-                    .then(() => {
-                        updatePortStatus(port, true);
-                    })
-                    .catch(() => {
-                        updatePortStatus(port, false);
+        /* ==========================================================================
+           1. CINEMATIC WAVE TEXT ASSEMBLY ANIMATION (ULTRA SLEEK & DELIBERATE)
+           ========================================================================== */
+        function animateTextAssembly(elementId, finalText, delay = 0) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            const symbols = ['✦', '✧', '⚡', '◇', '◈', '✺'];
+            const targetChars = finalText.split('');
+            
+            // Build initial invisible DOM spans
+            el.innerHTML = targetChars.map((char) => {
+                if (char === ' ') return '<span style="display:inline-block; width:0.3em;"> </span>';
+                return `<span class="reveal-char" style="opacity: 0; transform: translateY(8px); display: inline-block;">${char}</span>`;
+            }).join('');
+
+            const spans = el.querySelectorAll('.reveal-char');
+            let spanIdx = 0;
+
+            setTimeout(() => {
+                const interval = setInterval(() => {
+                    if (spanIdx >= spans.length) {
+                        clearInterval(interval);
+                        return;
+                    }
+
+                    const targetSpan = spans[spanIdx];
+                    const finalLetter = targetChars[spanIdx] || '';
+
+                    // 1-frame glowing sci-fi cipher pulse before locking letter
+                    targetSpan.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                    targetSpan.classList.add('reveal-cipher');
+                    targetSpan.style.opacity = '1';
+                    targetSpan.style.transform = 'translateY(0)';
+
+                    setTimeout(() => {
+                        targetSpan.innerText = finalLetter;
+                        targetSpan.classList.remove('reveal-cipher');
+                    }, 50);
+
+                    spanIdx++;
+                }, 40); // Smooth fluid rhythm
+            }, delay);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            animateTextAssembly('hero-title-1', 'Impulsamos tu Agencia y Empresa con', 150);
+            animateTextAssembly('hero-title-2', 'Aplicaciones con IA a la Medida', 750);
+        });
+
+        /* ==========================================================================
+           2. ENTORNO DUAL: LOCALHOST (PUERTOS) VS PRODUCCIÓN (SOLUCIONES / DOMINIOS)
+           ========================================================================== */
+        const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+        const TARGET_URLS = {
+            crm: IS_LOCAL ? 'http://localhost:4001' : 'https://crm.novasolum.cloud',
+            geo: IS_LOCAL ? 'http://localhost:4002' : 'https://geo.novasolum.cloud',
+            fichaje: IS_LOCAL ? 'http://localhost:4003' : 'https://fichaje.novasolum.cloud',
+            farmago: IS_LOCAL ? 'http://localhost:4004' : 'https://farmago.novasolum.cloud',
+            simulador: IS_LOCAL ? 'http://localhost:4005' : 'https://simulador.novasolum.cloud'
+        };
+
+        document.getElementById('link-crm').href = TARGET_URLS.crm;
+        document.getElementById('link-geoweb').href = TARGET_URLS.geo;
+        document.getElementById('link-geoasist').href = TARGET_URLS.fichaje;
+        document.getElementById('link-farmago').href = TARGET_URLS.farmago;
+        document.getElementById('link-simulador').href = TARGET_URLS.simulador;
+
+        document.getElementById('foot-crm').href = TARGET_URLS.crm;
+        document.getElementById('foot-geo').href = TARGET_URLS.geo;
+        document.getElementById('foot-fichaje').href = TARGET_URLS.fichaje;
+        document.getElementById('foot-farmago').href = TARGET_URLS.farmago;
+        document.getElementById('foot-simulador').href = TARGET_URLS.simulador;
+
+        // Health check para monitorear disponibilidad de soluciones
+        const healthCheckMapping = [
+            { key: 'crm', port: 4001, domain: 'https://crm.novasolum.cloud' },
+            { key: 'geo', port: 4002, domain: 'https://geo.novasolum.cloud' },
+            { key: 'fichaje', port: 4003, domain: 'https://fichaje.novasolum.cloud' },
+            { key: 'farmago', port: 4004, domain: 'https://farmago.novasolum.cloud' },
+            { key: 'simulador', port: 4005, domain: 'https://simulador.novasolum.cloud' }
+        ];
+
+        async function checkServerHealth() {
+            healthCheckMapping.forEach(async (item) => {
+                const dot = document.getElementById(`dot-${item.key}`);
+                const text = document.getElementById(`status-text-${item.key}`);
+                const targetEndpoint = IS_LOCAL ? `http://localhost:${item.port}` : item.domain;
+                
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 2500);
+                    
+                    await fetch(targetEndpoint, { 
+                        mode: 'no-cors', 
+                        signal: controller.signal 
                     });
+                    
+                    clearTimeout(timeoutId);
+                    if (dot) dot.classList.add('online');
+                    if (text) {
+                        text.innerText = 'Online';
+                        text.style.color = '#34d399';
+                    }
+                } catch (e) {
+                    if (dot) dot.classList.remove('online');
+                    if (text) {
+                        text.innerText = 'Apagado';
+                        text.style.color = '#64748b';
+                    }
+                }
             });
         }
 
-        function updatePortStatus(port, isOnline) {
-            const dot = document.getElementById(`dot-${port}`);
-            const text = document.getElementById(`status-text-${port}`);
-            if (isOnline) {
-                dot.classList.add('active');
-                text.innerText = `Servicio Activo`;
-                text.style.color = 'var(--color-crm)';
-            } else {
-                dot.classList.remove('active');
-                text.innerText = `Fuera de servicio`;
-                text.style.color = 'var(--text-mute)';
-            }
-        }
+        checkServerHealth();
+        setInterval(checkServerHealth, 12000);
 
-        // Ejecutar revisi├│n al inicio y cada 10 segundos
-        checkLocalhostPorts();
-        setInterval(checkLocalhostPorts, 10000);
-
-        // 2. Control de Live Demo Iframe
-        function launchLiveDemo(port) {
-            const modal = document.getElementById('liveDemoModal');
-            const iframe = document.getElementById('liveDemoIframe');
-            const title = document.getElementById('liveModalTitle');
+        // Calculator ROI Logic
+        function updateCalculator() {
+            const hours = parseInt(document.getElementById('calc-hours').value);
+            const team = parseInt(document.getElementById('calc-team').value);
             
-            let name = "";
-            switch(port) {
-                case 4001: name = "NovAI CRM"; break;
-                case 4002: name = "GeoNova Gesti├│n"; break;
-                case 4003: name = "GeoNova Fichaje"; break;
-                case 4004: name = "FarmaGo Comercio"; break;
-                case 4005: name = "Simulador Financiero"; break;
-            }
-
-            title.innerText = `M├│dulo en Vivo - ${name}`;
-            iframe.src = `http://localhost:${port}`;
-            modal.classList.add('active');
-        }
-
-        function closeLiveDemo() {
-            const modal = document.getElementById('liveDemoModal');
-            const iframe = document.getElementById('liveDemoIframe');
-            iframe.src = "";
-            modal.classList.remove('active');
-        }
-
-        // 3. MOCKUPS CENTER: SIMULACIONES TOTALMENTE INTERACTIVAS SIN ENCENDER SERVIDORES
-        function openMockup(type) {
-            const overlay = document.getElementById('mockupOverlay');
-            const body = document.getElementById('mockupBody');
-            const navTitle = document.getElementById('mockupNavTitle');
-            const logo = document.getElementById('mockupLogo');
-
-            body.innerHTML = ""; // Limpiar mockup anterior
-
-            if (type === 'crm') {
-                navTitle.innerText = "Simulador Interactivo: NovAI CRM";
-                logo.innerText = "N";
-                logo.style.background = "var(--color-crm)";
-                
-                body.innerHTML = `
-                    <div class="web-frame">
-                        <div class="web-frame-header">
-                            <div class="browser-dots">
-                                <div class="browser-dot" style="background:#ef4444;"></div>
-                                <div class="browser-dot" style="background:#f59e0b;"></div>
-                                <div class="browser-dot" style="background:#10b981;"></div>
-                            </div>
-                            <div class="browser-address">http://novasolum.crm/login</div>
-                        </div>
-                        <div class="mock-content-wrapper" id="crmMockContent">
-                            <!-- Login Screen -->
-                            <div class="crm-login-view" id="crmLoginView">
-                                <div style="text-align: center; margin-bottom: 10px;">
-                                    <h2 class="font-outfit" style="color: var(--color-crm); margin-bottom: 8px;">NovAI CRM</h2>
-                                    <p style="color: var(--text-mute); font-size: 13px;">Acceso administrativo del ecosistema</p>
-                                </div>
-                                <div class="crm-login-box">
-                                    <div class="crm-input-group">
-                                        <label class="input-label" style="font-size:10px;">Usuario / Correo</label>
-                                        <input type="text" class="crm-input" value="admin@novasolum.com" readonly>
-                                    </div>
-                                    <div class="crm-input-group" style="margin-bottom:20px;">
-                                        <label class="input-label" style="font-size:10px;">Contrase├▒a</label>
-                                        <input type="password" class="crm-input" value="ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó" readonly>
-                                    </div>
-                                    <button class="btn btn-live" style="background:var(--color-crm); width:100%;" onclick="demoLoginCRM()">
-                                        <i data-lucide="log-in" style="width:14px; height:14px;"></i> Ingresar al Dashboard
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- Dashboard (Hidden by default) -->
-                            <div class="crm-dashboard-view" id="crmDashboardView">
-                                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:12px;">
-                                    <div>
-                                        <h3 class="font-outfit" style="color: var(--color-crm);">Panel de Control</h3>
-                                        <p style="color:var(--text-mute); font-size:12px;">Servicios de Limpieza Corporativos</p>
-                                    </div>
-                                    <button class="btn btn-mock" style="font-size:11px; padding:6px 12px; flex-grow:0;" onclick="showCrmToast()">
-                                        <i data-lucide="download" style="width:12px; height:12px;"></i> Exportar Excel
-                                    </button>
-                                </div>
-                                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:10px;">
-                                    <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.05);">
-                                        <span class="input-label" style="font-size:9px;">Operarios Activos</span>
-                                        <h3 style="font-size:20px; font-weight:bold; color:#fff; margin-top:4px;">18 / 24</h3>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.05);">
-                                        <span class="input-label" style="font-size:9px;">Contratos Mensuales</span>
-                                        <h3 style="font-size:20px; font-weight:bold; color:var(--color-crm); margin-top:4px;">42</h3>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.05);">
-                                        <span class="input-label" style="font-size:9px;">M├írgenes Netos</span>
-                                        <h3 style="font-size:20px; font-weight:bold; color:var(--color-geo); margin-top:4px;">40.2%</h3>
-                                    </div>
-                                </div>
-                                <div style="margin-top:10px; background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.05); padding:14px; border-radius:12px;">
-                                    <h4 style="font-size:13px; font-weight:bold; color:#fff; margin-bottom:8px;">Servicios Pendientes de Hoy</h4>
-                                    <div style="display:flex; flex-direction:column; gap:8px; font-size:12px;">
-                                        <div style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:6px;">
-                                            <span>Limpieza de Oficinas Las Brisas</span>
-                                            <span style="color:var(--color-crm); font-weight:bold;">Completado 09:00</span>
-                                        </div>
-                                        <div style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:6px;">
-                                            <span>Mantenimiento Sucursal Calacoto</span>
-                                            <span style="color:var(--color-geo); font-weight:bold;">En proceso</span>
-                                        </div>
-                                        <div style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:6px;">
-                                            <span>Desinfecci├│n Almacenes Bolivia</span>
-                                            <span style="color:var(--text-mute);">Programado 15:30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                lucide.createIcons();
-            }
+            document.getElementById('calc-hours-val').innerText = `${hours} hrs`;
+            document.getElementById('calc-team-val').innerText = `${team} personas`;
             
-            else if (type === 'geoweb') {
-                navTitle.innerText = "Simulador Interactivo: GeoNova360 Web (Admin)";
-                logo.innerText = "G";
-                logo.style.background = "var(--color-geo)";
-                
-                body.innerHTML = `
-                    <div class="web-frame">
-                        <div class="web-frame-header">
-                            <div class="browser-dots">
-                                <div class="browser-dot" style="background:#ef4444;"></div>
-                                <div class="browser-dot" style="background:#f59e0b;"></div>
-                                <div class="browser-dot" style="background:#10b981;"></div>
-                            </div>
-                            <div class="browser-address">http://geonova360.admin/map</div>
-                        </div>
-                        <div class="geo-web-layout">
-                            <div class="geo-sidebar">
-                                <h4 class="font-outfit" style="color:var(--color-geo); font-size:14px; margin-bottom:8px;">Operarios en L├¡nea</h4>
-                                <div style="display:flex; flex-direction:column; gap:8px;">
-                                    <div style="background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.15); padding:10px; border-radius:8px; cursor:pointer;" onclick="focusPin('scz')">
-                                        <div style="font-size:12px; font-weight:bold;">Juan Perez</div>
-                                        <div style="font-size:10px; color:var(--text-mute); margin-top:2px;">Zona Norte, Las Brisas (SCZ)</div>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:10px; border-radius:8px; cursor:pointer;" onclick="focusPin('lpz')">
-                                        <div style="font-size:12px; font-weight:bold;">Maria Gomez</div>
-                                        <div style="font-size:10px; color:var(--text-mute); margin-top:2px;">Zona Sur, Calacoto (LPZ)</div>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:10px; border-radius:8px; cursor:pointer;" onclick="focusPin('cbb')">
-                                        <div style="font-size:12px; font-weight:bold;">Carlos Alvarez</div>
-                                        <div style="font-size:10px; color:var(--text-mute); margin-top:2px;">Zona Central, La Cancha (CBB)</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geo-map-area" id="geoMapArea">
-                                <div style="position:absolute; top:20px; left:20px; background:rgba(7,5,15,0.85); padding:8px 12px; border-radius:8px; font-size:11px; border:1px solid rgba(255,255,255,0.08); z-index:5;">
-                                    <strong>Mapa Local de Cobertura</strong><br>
-                                    <span style="color:var(--text-mute);">Presiona un trabajador para rastrearlo</span>
-                                </div>
-                                <!-- SCZ Pin -->
-                                <div class="map-pin" id="pin-scz" style="top: 40%; left: 60%;">
-                                    <i data-lucide="map-pin" style="fill: var(--color-geo); color:#000;"></i>
-                                    <span style="font-size:9px; background:#000; padding:2px 4px; border-radius:4px; margin-top:2px; font-weight:bold;">Juan Perez</span>
-                                </div>
-                                <!-- LPZ Pin -->
-                                <div class="map-pin" id="pin-lpz" style="top: 25%; left: 30%;">
-                                    <i data-lucide="map-pin" style="fill: var(--color-geo); color:#000;"></i>
-                                    <span style="font-size:9px; background:#000; padding:2px 4px; border-radius:4px; margin-top:2px; font-weight:bold;">Maria Gomez</span>
-                                </div>
-                                <!-- CBB Pin -->
-                                <div class="map-pin" id="pin-cbb" style="top: 60%; left: 45%;">
-                                    <i data-lucide="map-pin" style="fill: var(--color-geo); color:#000;"></i>
-                                    <span style="font-size:9px; background:#000; padding:2px 4px; border-radius:4px; margin-top:2px; font-weight:bold;">Carlos Alvarez</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                lucide.createIcons();
+            const totalMonthlyHoursSaved = Math.round(hours * team * 3.2);
+            const estimatedROI = Math.round(200 + (hours * team * 1.5));
+            
+            document.getElementById('res-hours-saved').innerText = `${totalMonthlyHoursSaved} hrs`;
+            document.getElementById('res-roi').innerText = `+${estimatedROI}%`;
+        }
+
+        // Handle Contact Form Submit -> Pre-fill WhatsApp
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const phone = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+            const message = document.getElementById('form-message').value;
+
+            const fullText = `¡Hola, puede brindarme información sobre las soluciones de NovaSolum!\nMi nombre es ${name}.\nEmpresa/Contacto: ${phone} (${email})\nSolución de Interés: ${service}\nMensaje: ${message}`;
+            const encodedText = encodeURIComponent(fullText);
+            
+            const wppUrl = `https://wa.me/59179691952?text=${encodedText}`;
+            window.open(wppUrl, '_blank');
+        }
+
+        /* ==========================================================================
+           3. 3D UNIVERSE & CELESTIAL SPACE NAVIGATOR CANVAS
+           ========================================================================== */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let stars = [];
+        let nebulaClouds = [];
+        let celestialAngle = 0;
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            targetMouseX = (e.clientX - width / 2) * 0.04;
+            targetMouseY = (e.clientY - height / 2) * 0.04;
+        });
+
+        // Generate Deep Space Stars
+        const starCount = 140;
+        for (let i = 0; i < starCount; i++) {
+            stars.push({
+                x: (Math.random() - 0.5) * width * 2,
+                y: (Math.random() - 0.5) * height * 2,
+                z: Math.random() * 1000 + 1,
+                size: Math.random() * 1.8 + 0.5,
+                hue: Math.random() > 0.6 ? 270 : (Math.random() > 0.3 ? 190 : 0)
+            });
+        }
+
+        // Generate Cosmic Nebula Dust
+        const nebulaCount = 5;
+        for (let i = 0; i < nebulaCount; i++) {
+            nebulaClouds.push({
+                x: (Math.random() - 0.5) * width,
+                y: (Math.random() - 0.5) * height,
+                radius: Math.random() * 300 + 200,
+                color: i % 2 === 0 ? 'rgba(168, 85, 247, 0.04)' : 'rgba(6, 182, 212, 0.03)'
+            });
+        }
+
+        function renderUniverse() {
+            mouseX += (targetMouseX - mouseX) * 0.04;
+            mouseY += (targetMouseY - mouseY) * 0.04;
+            celestialAngle += 0.003;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Deep Space Ambient Wash
+            const spaceGrad = ctx.createRadialGradient(width/2 + mouseX*3, height/2 + mouseY*3, 10, width/2, height/2, width*0.9);
+            spaceGrad.addColorStop(0, '#040409');
+            spaceGrad.addColorStop(0.6, '#020204');
+            spaceGrad.addColorStop(1, '#000002');
+            ctx.fillStyle = spaceGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw Cosmic Nebula Dust
+            for (let n of nebulaClouds) {
+                const nGrad = ctx.createRadialGradient(
+                    width/2 + n.x + mouseX*2, 
+                    height/2 + n.y + mouseY*2, 
+                    0, 
+                    width/2 + n.x + mouseX*2, 
+                    height/2 + n.y + mouseY*2, 
+                    n.radius
+                );
+                nGrad.addColorStop(0, n.color);
+                nGrad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = nGrad;
+                ctx.beginPath();
+                ctx.arc(width/2 + n.x + mouseX*2, height/2 + n.y + mouseY*2, n.radius, 0, Math.PI * 2);
+                ctx.fill();
             }
 
-            else if (type === 'geoasist') {
-                navTitle.innerText = "Simulador Interactivo: GeoNova360 Asistencia (Operario)";
-                logo.innerText = "A";
-                logo.style.background = "var(--color-geo)";
-                
-                body.innerHTML = `
-                    <div class="phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="mobile-header">
-                            <span style="font-size:10px; color:var(--color-geo); font-weight:bold; letter-spacing:1px; text-transform:uppercase;">GeoNova360</span>
-                            <h3 class="font-outfit" style="font-size:16px; margin-top:2px;">Marcador Asistencial</h3>
-                        </div>
-                        <div class="mobile-body" id="mobileBodyView">
-                            <div style="width:100%; text-align:center; margin-top:10px;">
-                                <span class="input-label" style="font-size:9px;">Operario Identificado</span>
-                                <h4 style="font-size:14px; font-weight:bold;">Juan Perez</h4>
-                                <p style="color:var(--text-mute); font-size:11px; margin-top:4px;">Asignado a: Las Brisas SCZ</p>
-                            </div>
-                            
-                            <div class="gps-circle">
-                                <div class="gps-circle-inner" id="biometricButton" onclick="triggerBiometricMock()">
-                                    <i data-lucide="scan-face" style="width:40px; height:40px; color:var(--color-geo);"></i>
-                                </div>
-                            </div>
-                            
-                            <div style="width:100%; text-align:center; margin-bottom:20px;">
-                                <div id="mobileStatusText" style="font-size:13px; font-weight:bold; color:var(--text-mute);">Presiona para Marcar Entrada</div>
-                                <div style="display:flex; justify-content:center; align-items:center; gap:6px; font-size:10px; color:var(--text-mute); margin-top:6px; font-family:monospace;">
-                                    <i data-lucide="map" style="width:10px; height:10px;"></i>
-                                    <span>Lat: -17.764  Lon: -63.167</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                lucide.createIcons();
+            // Draw 3D Orbiting Celestial Body (Planet / Sphere in Deep Background Space)
+            const celestialX = width * 0.8 + Math.cos(celestialAngle * 0.5) * 40 + mouseX * 3;
+            const celestialY = height * 0.25 + Math.sin(celestialAngle * 0.5) * 30 + mouseY * 3;
+            const celestialRadius = 65;
+
+            // Celestial Planet Glow
+            const planetGrad = ctx.createRadialGradient(
+                celestialX - 15, celestialY - 15, 5,
+                celestialX, celestialY, celestialRadius
+            );
+            planetGrad.addColorStop(0, 'rgba(216, 180, 254, 0.4)');
+            planetGrad.addColorStop(0.4, 'rgba(168, 85, 247, 0.15)');
+            planetGrad.addColorStop(1, 'rgba(6, 182, 212, 0.0)');
+            ctx.fillStyle = planetGrad;
+            ctx.beginPath();
+            ctx.arc(celestialX, celestialY, celestialRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Celestial Wireframe Atmosphere Rings
+            ctx.save();
+            ctx.translate(celestialX, celestialY);
+            ctx.rotate(0.35 + Math.sin(celestialAngle) * 0.05);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, celestialRadius * 1.7, celestialRadius * 0.45, 0, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(192, 132, 252, 0.25)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.restore();
+
+            // Render 3D Starfield & Warp Flight Effect
+            const fov = 500;
+            let projectedStars = [];
+
+            for (let s of stars) {
+                s.z -= 0.8;
+                if (s.z <= 0) s.z = 1000;
+
+                const scale = fov / s.z;
+                const sx = (s.x + mouseX * 25) * scale + width / 2;
+                const sy = (s.y + mouseY * 25) * scale + height / 2;
+
+                if (sx >= 0 && sx <= width && sy >= 0 && sy <= height) {
+                    projectedStars.push({ sx, sy, scale, size: s.size * scale, hue: s.hue });
+                }
             }
 
-            else if (type === 'farmago') {
-                navTitle.innerText = "Simulador Interactivo: FarmaGo eCommerce";
-                logo.innerText = "F";
-                logo.style.background = "var(--color-farma)";
-                
-                body.innerHTML = `
-                    <div class="web-frame">
-                        <div class="web-frame-header">
-                            <div class="browser-dots">
-                                <div class="browser-dot" style="background:#ef4444;"></div>
-                                <div class="browser-dot" style="background:#f59e0b;"></div>
-                                <div class="browser-dot" style="background:#10b981;"></div>
-                            </div>
-                            <div class="browser-address">http://farmago.shop</div>
-                            <div style="color:var(--color-farma); font-size:12px; display:flex; align-items:center; gap:4px; font-weight:bold; cursor:pointer;" onclick="showFarmaToast()">
-                                <i data-lucide="shopping-cart" style="width:14px; height:14px;"></i> Carrito (<span id="cartCount">0</span>)
-                            </div>
-                        </div>
-                        <div class="mock-content-wrapper">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                                <h3 class="font-outfit" style="color:var(--color-farma);">Cat├ílogo de Medicamentos</h3>
-                                <span style="font-size:11px; color:var(--text-mute);">Sincronizaci├│n en la nube activa</span>
-                            </div>
-                            <div class="farma-grid">
-                                <div class="farma-prod-card">
-                                    <div>
-                                        <h4 style="font-size:14px; font-weight:bold;">Paracetamol 500mg</h4>
-                                        <p style="font-size:11px; color:var(--text-mute);">Caja de 20 tabletas</p>
-                                    </div>
-                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                                        <span style="font-weight:bold; font-size:14px; color:var(--color-farma);">Bs 12.00</span>
-                                        <button class="btn btn-live" style="background:var(--color-farma); padding:4px 8px; font-size:11px; flex-grow:0;" onclick="addToCart()">Agregar</button>
-                                    </div>
-                                </div>
-                                <div class="farma-prod-card">
-                                    <div>
-                                        <h4 style="font-size:14px; font-weight:bold;">Ibuprofeno 400mg</h4>
-                                        <p style="font-size:11px; color:var(--text-mute);">Caja de 10 c├ípsulas blandas</p>
-                                    </div>
-                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                                        <span style="font-weight:bold; font-size:14px; color:var(--color-farma);">Bs 18.50</span>
-                                        <button class="btn btn-live" style="background:var(--color-farma); padding:4px 8px; font-size:11px; flex-grow:0;" onclick="addToCart()">Agregar</button>
-                                    </div>
-                                </div>
-                                <div class="farma-prod-card">
-                                    <div>
-                                        <h4 style="font-size:14px; font-weight:bold;">Aspirina 100mg</h4>
-                                        <p style="font-size:11px; color:var(--text-mute);">Caja de 30 tabletas infantiles</p>
-                                    </div>
-                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                                        <span style="font-weight:bold; font-size:14px; color:var(--color-farma);">Bs 9.00</span>
-                                        <button class="btn btn-live" style="background:var(--color-farma); padding:4px 8px; font-size:11px; flex-grow:0;" onclick="addToCart()">Agregar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                lucide.createIcons();
+            // Draw Constellation Synapse Lines between Close Stars
+            for (let i = 0; i < projectedStars.length; i++) {
+                for (let j = i + 1; j < projectedStars.length; j++) {
+                    const s1 = projectedStars[i];
+                    const s2 = projectedStars[j];
+                    const dx = s1.sx - s2.sx;
+                    const dy = s1.sy - s2.sy;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 110) {
+                        const alpha = (1 - dist / 110) * 0.15 * Math.min(s1.scale, s2.scale);
+                        ctx.beginPath();
+                        ctx.moveTo(s1.sx, s1.sy);
+                        ctx.lineTo(s2.sx, s2.sy);
+                        ctx.strokeStyle = s1.hue === 270 ? `rgba(168, 85, 247, ${alpha})` : `rgba(6, 182, 212, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
             }
 
-            else if (type === 'simulador') {
-                navTitle.innerText = "Simulador Interactivo: Tablero Comercial Bolivia";
-                logo.innerText = "S";
-                logo.style.background = "var(--color-sim)";
-                
-                body.innerHTML = `
-                    <div class="web-frame">
-                        <div class="web-frame-header">
-                            <div class="browser-dots">
-                                <div class="browser-dot" style="background:#ef4444;"></div>
-                                <div class="browser-dot" style="background:#f59e0b;"></div>
-                                <div class="browser-dot" style="background:#10b981;"></div>
-                            </div>
-                            <div class="browser-address">http://novasolum.simulator</div>
-                        </div>
-                        <div class="mock-content-wrapper">
-                            <div style="margin-bottom:16px;">
-                                <h3 class="font-outfit" style="color:var(--color-sim);">Modelo Estoc├ístico de Distribuci├│n</h3>
-                                <p style="font-size:12px; color:var(--text-mute);">Simula m├írgenes comerciales en Bolivia seg├║n PVP</p>
-                            </div>
-                            <div class="sim-control-panel">
-                                <div class="sim-slider-group">
-                                    <div style="display:flex; justify-content:space-between;">
-                                        <label class="input-label" style="font-size:11px;">Precio Venta P├║blico (Bs)</label>
-                                        <span id="sliderVal" style="font-size:12px; font-weight:bold; color:var(--color-sim);">Bs 15.0</span>
-                                    </div>
-                                    <input type="range" class="range-slider" id="simSlider" min="8" max="20" step="0.5" value="15" oninput="runEstochasticSimulation()">
-                                    
-                                    <div style="display:flex; justify-content:space-between; margin-top:8px;">
-                                        <label class="input-label" style="font-size:11px;">Territorio Activo</label>
-                                        <span style="font-size:11px; font-weight:bold; color:#fff;">SCZ / LPZ / CBB</span>
-                                    </div>
-                                </div>
-                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-                                    <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06); display:flex; flex-direction:column; justify-content:center;">
-                                        <span class="input-label" style="font-size:10px;">Proyecci├│n Cajas (12u)</span>
-                                        <h3 id="projCajas" style="font-size:24px; font-weight:bold; color:#fff; margin-top:4px;">1,200</h3>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06); display:flex; flex-direction:column; justify-content:center;">
-                                        <span class="input-label" style="font-size:10px;">Margen Neto Esperado</span>
-                                        <h3 id="projRevenue" style="font-size:24px; font-weight:bold; color:var(--color-sim); margin-top:4px;">Bs 7,200</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                runEstochasticSimulation(); // Iniciar c├ílculo autom├ítico
+            // Draw Stars
+            for (let s of projectedStars) {
+                ctx.beginPath();
+                ctx.arc(s.sx, s.sy, Math.max(0.6, s.size), 0, Math.PI * 2);
+                ctx.fillStyle = s.hue === 270 ? `rgba(216, 180, 254, ${Math.min(1, s.scale * 0.8)})` : `rgba(125, 211, 252, ${Math.min(1, s.scale * 0.8)})`;
+                ctx.shadowBlur = 8 * s.scale;
+                ctx.shadowColor = s.hue === 270 ? '#a855f7' : '#06b6d4';
+                ctx.fill();
+                ctx.shadowBlur = 0;
             }
 
-            overlay.classList.add('active');
+            requestAnimationFrame(renderUniverse);
         }
 
-        function closeMockup() {
-            document.getElementById('mockupOverlay').classList.remove('active');
-        }
-
-        // Acciones Mockups
-        // CRM Login
-        function demoLoginCRM() {
-            const login = document.getElementById('crmLoginView');
-            const dashboard = document.getElementById('crmDashboardView');
-            login.style.display = 'none';
-            dashboard.style.display = 'flex';
-            showPortalToast("Inicio de sesi├│n simulado correctamente.");
-        }
-        function showCrmToast() {
-            showPortalToast("Excel de rentabilidad generado (Simulado).");
-        }
-
-        // Geo Web Pin focus
-        function focusPin(city) {
-            const pinScz = document.getElementById('pin-scz');
-            const pinLpz = document.getElementById('pin-lpz');
-            const pinCbb = document.getElementById('pin-cbb');
-            
-            pinScz.style.transform = "scale(1)";
-            pinLpz.style.transform = "scale(1)";
-            pinCbb.style.transform = "scale(1)";
-
-            const target = document.getElementById(`pin-${city}`);
-            target.style.transform = "scale(1.6)";
-            
-            showPortalToast(`Ubicaci├│n enfocada: ${city.toUpperCase()}`);
-        }
-
-        // Geo Asist Marcado Biom├⌐trico
-        function triggerBiometricMock() {
-            const button = document.getElementById('biometricButton');
-            const text = document.getElementById('mobileStatusText');
-            
-            button.innerHTML = `<i data-lucide="loader-2" class="animate-spin" style="width:40px; height:40px; color:var(--color-geo);"></i>`;
-            text.innerText = "Escaneando rostro...";
-            lucide.createIcons();
-
-            setTimeout(() => {
-                button.style.borderColor = 'var(--color-crm)';
-                button.style.background = 'rgba(0, 255, 170, 0.1)';
-                button.innerHTML = `<i data-lucide="check" style="width:40px; height:40px; color:var(--color-crm);"></i>`;
-                text.innerText = "┬íAsistencia Marcada con ├ëxito!";
-                text.style.color = 'var(--color-crm)';
-                lucide.createIcons();
-                showPortalToast("Asistencia registrada en el servidor.");
-            }, 1800);
-        }
-
-        // FarmaGo Carrito
-        let itemsInCart = 0;
-        function addToCart() {
-            itemsInCart++;
-            document.getElementById('cartCount').innerText = itemsInCart;
-            showPortalToast("Medicamento a├▒adido al carrito.");
-        }
-        function showFarmaToast() {
-            if(itemsInCart === 0) {
-                showPortalToast("El carrito est├í vac├¡o. Agrega medicamentos.");
-            } else {
-                showPortalToast(`Compra simulada por ${itemsInCart} producto(s) exitosamente.`);
-                itemsInCart = 0;
-                document.getElementById('cartCount').innerText = "0";
-            }
-        }
-
-        // Simulador Estoc├ístico
-        function runEstochasticSimulation() {
-            const price = parseFloat(document.getElementById('simSlider').value);
-            document.getElementById('sliderVal').innerText = `Bs ${price.toFixed(1)}`;
-            
-            // F├│rmula simple estoc├ística
-            const baseCajas = 1800;
-            const factor = 15 / price;
-            const cajasSimuladas = Math.round(baseCajas * factor * (0.9 + Math.random() * 0.2));
-            const totalRevenue = cajasSimuladas * price;
-            const margenNeto = totalRevenue * 0.45; // 45% margen
-
-            document.getElementById('projCajas').innerText = cajasSimuladas.toLocaleString('es-BO');
-            document.getElementById('projRevenue').innerText = `Bs ${Math.round(margenNeto).toLocaleString('es-BO')}`;
-        }
-
-        // 4. Toast Notification
-        function showPortalToast(message) {
-            const toast = document.getElementById('portalToast');
-            document.getElementById('portalToastMsg').innerText = message;
-            toast.style.transform = 'translateY(0)';
-            toast.style.opacity = '1';
-            
-            setTimeout(() => {
-                toast.style.transform = 'translateY(100px)';
-                toast.style.opacity = '0';
-            }, 2500);
-        }
+        requestAnimationFrame(renderUniverse);
     </script>
-
-    <!-- WhatsApp Floating CTA -->
-    <a href="https://wa.me/59179691952?text=Me%20interesa%20obtener%20una%20soluci├│n%20de%20NovaSolum" target="_blank" class="floating-cta">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 20px; height: 20px; fill: currentColor;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-        <span>Solicitar Demo</span>
-    </a>
 </body>
 </html>
