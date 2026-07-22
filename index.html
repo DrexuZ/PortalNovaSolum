@@ -1625,8 +1625,8 @@
             document.getElementById('res-roi').innerText = `+${estimatedROI}%`;
         }
 
-        // Handle Contact Form Submit -> Pre-fill WhatsApp
-        function handleFormSubmit(e) {
+        // Handle Contact Form Submit -> Dispatch email to info@novasolum.cloud & Open WhatsApp
+        async function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('form-name').value;
             const email = document.getElementById('form-email').value;
@@ -1634,11 +1634,29 @@
             const service = document.getElementById('form-service').value;
             const message = document.getElementById('form-message').value;
 
+            const payload = { name, email, phone, service, message };
+
+            // 1. Enviar correo silencioso a info@novasolum.cloud mediante el script backend en Hostinger
+            try {
+                fetch('send_mail.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.log('Envío de correo ejecutado');
+            }
+
+            // 2. Abrir canal directo de WhatsApp
             const fullText = `¡Hola, puede brindarme información sobre las soluciones de NovaSolum!\nMi nombre es ${name}.\nEmpresa/Contacto: ${phone} (${email})\nSolución de Interés: ${service}\nMensaje: ${message}`;
             const encodedText = encodeURIComponent(fullText);
             
             const wppUrl = `https://wa.me/59179691952?text=${encodedText}`;
             window.open(wppUrl, '_blank');
+
+            // 3. Notificación de éxito en la interfaz
+            alert('¡Gracias por tu mensaje! Se ha remitido la solicitud a info@novasolum.cloud y abierto la conversación por WhatsApp.');
+            document.getElementById('contact-form').reset();
         }
 
         /* ==========================================================================
