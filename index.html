@@ -1071,6 +1071,11 @@
             .calc-wrapper { grid-template-columns: 1fr; padding: 32px; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .demo-wrapper { grid-template-columns: 1fr; padding: 32px; }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .case-studies-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1091,6 +1096,8 @@
 
             .hero-section { padding: 60px 0 40px; }
             .hero-subtitle { font-size: 15px; }
+            .section-title { font-size: clamp(22px, 4vw, 32px); }
+            .section-subtitle { font-size: 14px; }
 
             .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 20px; }
             .metric-item { border-right: none; }
@@ -1103,16 +1110,46 @@
             
             .floating-wpp span { display: none; }
             .floating-wpp { padding: 14px; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-stats { flex-wrap: wrap; gap: 24px; justify-content: center; }
+            .about-value-item { padding: 16px; }
+            .about-value-item div:last-child { font-size: 13px; }
+
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .pricing-card { padding: 28px; }
+
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .testimonial-card { padding: 24px; }
+
+            .case-studies-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .case-card { padding: 24px; }
+            .case-metrics { flex-direction: column; gap: 12px; }
+            .case-before-after { flex-direction: column; }
+            .case-ba-arrow { transform: rotate(90deg); }
+
+            .demo-wrapper { grid-template-columns: 1fr; padding: 24px; }
+            .demo-benefits { gap: 10px; }
+
+            .faq-list { max-width: 100% !important; }
+            .faq-question { font-size: 13px; padding: 14px 18px; }
+            .faq-answer-inner { font-size: 12px; padding: 0 18px 14px; }
+
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
         }
 
         @media (max-width: 480px) {
             .metrics-grid { grid-template-columns: 1fr; }
             .hero-cta-group { flex-direction: column; width: 100%; }
             .hero-cta-group .btn { width: 100%; }
-            .pricing-grid { grid-template-columns: 1fr !important; }
-            .testimonials-grid { grid-template-columns: 1fr !important; }
-            .case-studies-grid { grid-template-columns: 1fr !important; }
+            .pricing-grid { grid-template-columns: 1fr !important; max-width: 100%; }
+            .testimonials-grid { grid-template-columns: 1fr !important; max-width: 100%; }
+            .case-studies-grid { grid-template-columns: 1fr !important; max-width: 100%; }
             .faq-list { max-width: 100% !important; }
+            .about-stats { flex-direction: column; align-items: center; }
+            .about-stat { text-align: center; }
+            .demo-wrapper { padding: 16px; }
         }
 
         /* ==========================================================================
@@ -1215,9 +1252,6 @@
         .demo-iframe-placeholder { text-align: center; padding: 40px; color: var(--text-tertiary); }
         .demo-iframe-placeholder .icon { font-size: 48px; margin-bottom: 16px; }
         .demo-iframe-placeholder p { font-size: 14px; margin-bottom: 16px; }
-        @media (max-width: 768px) {
-            .demo-wrapper { grid-template-columns: 1fr; }
-        }
     </style>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
