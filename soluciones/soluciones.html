@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaSolum | Soluciones Empresariales</title>
+    <meta name="description" content="Conoce todas las soluciones del ecosistema NovaSolum para impulsar tu negocio.">
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #020204;
+            --bg-card: rgba(15, 15, 24, 0.65);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(255, 255, 255, 0.18);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --accent-purple: #c084fc;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-pink: #ec4899;
+            --accent-whatsapp: #25d366;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; background: var(--bg-base); color: var(--text-primary); font-family: var(--font-main); -webkit-font-smoothing: antialiased; }
+        body { min-height: 100vh; overflow-x: hidden; }
+
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+
+        header { position: sticky; top: 0; z-index: 1000; background: rgba(2, 2, 4, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle); padding: 14px 0; }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; }
+        .brand-logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-img { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-subtle); }
+        .brand-title { font-size: 18px; font-weight: 800; color: #ffffff; font-family: var(--font-heading); }
+        .nav-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: var(--transition); }
+        .nav-link:hover { color: #ffffff; }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-full); background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 13px; font-weight: 600; text-decoration: none; transition: var(--transition); }
+        .back-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+        .solution-hero { padding: 80px 0 60px; text-align: center; }
+        .solution-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+        .solution-hero h1 { font-family: var(--font-heading); font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; color: #ffffff; }
+        .solution-hero p { font-size: 18px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-cta-group { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; border-radius: var(--radius-md); font-size: 15px; font-weight: 700; font-family: var(--font-main); text-decoration: none; cursor: pointer; transition: var(--transition); border: none; }
+        .btn-primary { background: #ffffff; color: #000; box-shadow: 0 4px 20px rgba(255,255,255,0.2); }
+        .btn-primary:hover { background: #f1f5f9; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255,255,255,0.35); }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-primary); border: 1px solid var(--border-subtle); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: var(--border-glow); transform: translateY(-2px); }
+
+        .preview-section { padding: 40px 0; }
+        .preview-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+        .preview-img { width: 100%; height: auto; display: block; }
+
+        .features-section { padding: 80px 0; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+        .section-title { font-family: var(--font-heading); font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 14px; color: #ffffff; }
+        .section-subtitle { font-size: 16px; color: var(--text-secondary); }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; transition: var(--transition); }
+        .feature-card:hover { border-color: var(--border-glow); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+        .feature-icon-wrap { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+        .feature-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        .all-solutions { padding: 60px 0; border-top: 1px solid var(--border-subtle); }
+        .solutions-links { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .solution-link-card { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle); text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 14px; transition: var(--transition); }
+        .solution-link-card:hover { border-color: var(--border-glow); color: #fff; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+
+        footer { border-top: 1px solid var(--border-subtle); background: rgba(2,2,4,0.95); padding: 40px 0 24px; text-align: center; }
+        footer p { color: var(--text-tertiary); font-size: 13px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: #fff; }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .solutions-links { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="https://novasolum.cloud" class="brand-logo-container">
+                    <img src="../assets/logo.png" alt="NovaSolum" class="brand-img" onerror="this.src='../assets/logo.jpg'">
+                    <div class="brand-title">NovaSolum</div>
+                </a>
+                <a href="https://novasolum.cloud#soluciones" class="back-btn">
+                    &larr; Volver al Portal
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="solution-hero">
+        <div class="container">
+            <div class="solution-badge" id="hero-badge" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #34d399;">
+                Ecosistema NovaSolum
+            </div>
+            <h1 id="hero-title">Nuestras Soluciones</h1>
+            <p id="hero-desc">Explora el ecosistema completo de soluciones empresariales diseñadas para impulsar tu negocio con inteligencia artificial y automatización.</p>
+            <div class="hero-cta-group">
+                <a href="https://novasolum.cloud#soluciones" class="btn btn-primary">
+                    Explorar en el Portal
+                </a>
+                <a href="https://wa.me/59179691952?text=%C2%A1Hola%2C%20puede%20brindarme%20informaci%C3%B3n%20sobre%20las%20soluciones%20de%20NovaSolum%21" target="_blank" class="btn btn-secondary" style="border-color: rgba(37,211,102,0.4); color: #4ade80;">
+                    Contactar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section">
+        <div class="container">
+            <div class="preview-card">
+                <img src="../assets/crm_preview.png" alt="Vista previa" class="preview-img" id="preview-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="features-title">Características Principales</h2>
+                <p class="section-subtitle" id="features-subtitle">Funcionalidades diseñadas para optimizar tus operaciones.</p>
+            </div>
+            <div class="features-grid" id="features-grid"></div>
+        </div>
+    </section>
+
+    <section class="all-solutions">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 30px;">
+                <h2 class="section-title" style="font-size: 28px;">Todas las Soluciones</h2>
+            </div>
+            <div class="solutions-links">
+                <a href="soluciones.html?sol=novai" class="solution-link-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NovAI CRM
+                </a>
+                <a href="soluciones.html?sol=geonova360" class="solution-link-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    GeoNova360
+                </a>
+                <a href="soluciones.html?sol=fichaje" class="solution-link-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" width="20" height="20"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    GeoNova Fichaje
+                </a>
+                <a href="soluciones.html?sol=farmanova" class="solution-link-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" width="20" height="20"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    FarmaNova POS
+                </a>
+                <a href="soluciones.html?sol=simulador" class="solution-link-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" width="20" height="20"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Simulador
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="https://novasolum.cloud">NovaSolum Business Suite</a>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const solutions = {
+            novai: {
+                badge: 'NovAI CRM',
+                badgeStyle: 'background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:#34d399',
+                title: 'NovAI — CRM & Ventas',
+                desc: 'Gestión unificada de clientes, pipeline de ventas en tiempo real, seguimiento automatizado de oportunidades y generación de cotizaciones empresariales. Diseñado para el mercado cruceño.',
+                preview: '../assets/crm_preview.png',
+                featuresTitle: 'Todo lo que necesitas para vender más',
+                featuresSubtitle: 'Herramientas potenciadas por IA para tu equipo comercial.',
+                ctaUrl: 'https://crm.novasolum.cloud',
+                ctaText: 'Ingresar a NovAI',
+                features: [
+                    { icon: 'users', title: 'Gestión de Clientes', desc: 'Base de datos unificada con historial completo de interacciones, contactos y oportunidades por cliente.' },
+                    { icon: 'git-branch', title: 'Pipeline Visual', desc: 'Tablero Kanban para seguimiento de ventas en tiempo real. Arrastra y categoriza oportunidades por etapa.' },
+                    { icon: 'file-text', title: 'Cotizaciones Automáticas', desc: 'Genera propuestas y cotizaciones profesionales en segundos con plantillas personalizables.' },
+                    { icon: 'bar-chart-2', title: 'Reportes & Analytics', desc: 'Dashboards ejecutivos con métricas de conversión, rendimiento del equipo y pronósticos de venta.' },
+                    { icon: 'zap', title: 'Automatización IA', desc: 'Lead scoring inteligente y seguimiento automático que prioriza las oportunidades con mayor probabilidad de cierre.' },
+                    { icon: 'shield', title: 'Seguridad Empresarial', desc: 'Control de acceso por roles, auditoría de acciones y cumplimiento con estándares de protección de datos.' }
+                ]
+            },
+            geonova360: {
+                badge: 'GeoNova360',
+                badgeStyle: 'background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);color:#22d3ee',
+                title: 'GeoNova360 — Gestión de Personal',
+                desc: 'Plataforma de monitoreo y geolocalización en tiempo real. Optimización de rutas operativas, supervisión de cuadrillas y mapas interactivos.',
+                preview: '../assets/geoweb_preview.png',
+                featuresTitle: 'Control total de tu equipo en campo',
+                featuresSubtitle: 'Geolocalización, rutas y supervisión en una sola plataforma.',
+                ctaUrl: 'https://geo.novasolum.cloud',
+                ctaText: 'Ingresar a GeoNova360',
+                features: [
+                    { icon: 'map-pin', title: 'Monitoreo GPS', desc: 'Ubicación en tiempo real de todo tu personal en campo con actualización cada 30 segundos.' },
+                    { icon: 'route', title: 'Optimización de Rutas', desc: 'Algoritmos inteligentes que calculan las rutas más eficientes para cada cuadrilla.' },
+                    { icon: 'users', title: 'Supervisión de Cuadrillas', desc: 'Asignación y seguimiento de tareas para equipos móviles con reporte automático.' },
+                    { icon: 'map', title: 'Mapas Interactivos', desc: 'Visualización geográfica de toda la operación con capas de datos personalizables.' },
+                    { icon: 'clock', title: 'Control de Asistencia', desc: 'Fichaje geolocalizado que registra entrada, salida y horas trabajadas automáticamente.' },
+                    { icon: 'alert-triangle', title: 'Alertas Inteligentes', desc: 'Notificaciones automáticas por incumplimiento de rutas, retrasos o zonas restringidas.' }
+                ]
+            },
+            fichaje: {
+                badge: 'GeoNova Fichaje',
+                badgeStyle: 'background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);color:#22d3ee',
+                title: 'GeoNova Fichaje — App Móvil',
+                desc: 'Sistema móvil de fichaje y control de asistencia para personal externo o en campo. Validación de ubicación geográfica e identidad segura.',
+                preview: '../assets/geoasist_preview.png',
+                featuresTitle: 'Control de asistencia desde el móvil',
+                featuresSubtitle: 'App Android para fichaje geolocalizado con verificación biométrica.',
+                ctaUrl: 'https://geo.novasolum.cloud',
+                ctaText: 'Conocer más',
+                features: [
+                    { icon: 'smartphone', title: 'Fichaje Móvil', desc: 'App Android intuitiva para registro de asistencia desde cualquier lugar.' },
+                    { icon: 'camera', title: 'Foto de Verificación', desc: 'Captura fotográfica en el momento del fichaje para validar identidad.' },
+                    { icon: 'map-pin', title: 'Geolocalización', desc: 'Validación automática de que el empleado se encuentra en la zona autorizada.' },
+                    { icon: 'shield', title: 'Geofence Seguro', desc: 'Perímetros virtuales que definen las zonas de trabajo autorizadas.' },
+                    { icon: 'file-text', title: 'Reportes Automáticos', desc: 'Generación automática de reportes de asistencia y horas trabajadas.' },
+                    { icon: 'lock', title: 'Acceso por PIN', desc: 'Descarga protegida con código de autorización empresarial.' }
+                ]
+            },
+            farmanova: {
+                badge: 'FarmaNova',
+                badgeStyle: 'background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.3);color:#f472b6',
+                title: 'FarmaNova — Comercio & POS',
+                desc: 'Sistema punto de venta y e-Commerce automatizado para el sector farmacéutico. Sincronización en tiempo real de inventarios, pedidos digitales y catálogo inteligente.',
+                preview: '../assets/farmago_preview.png',
+                featuresTitle: 'Tu farmacia conectada al mundo digital',
+                featuresSubtitle: 'POS avanzado con gestión de inventario y sincronización multi-sucursal.',
+                ctaUrl: 'https://crmfarma.novasolum.cloud',
+                ctaText: 'Ingresar a FarmaNova',
+                features: [
+                    { icon: 'monitor', title: 'Punto de Venta', desc: 'Interfaz táctil optimizada para agilizar el proceso de venta en farmacia.' },
+                    { icon: 'package', title: 'Gestión de Inventario', desc: 'Control completo del stock con alertas automáticas de stock mínimo y vencimiento.' },
+                    { icon: 'shopping-bag', title: 'Catálogo Digital', desc: 'Catálogo de productos con categorías, precios y disponibilidad en tiempo real.' },
+                    { icon: 'bar-chart', title: 'Reportes de Ventas', desc: 'Dashboards con métricas diarias, semanales y mensuales de rendimiento.' },
+                    { icon: 'refresh-cw', title: 'Sync Multi-Sucursal', desc: 'Sincronización automática de inventario entre todos los puntos de venta.' },
+                    { icon: 'credit-card', title: 'Múltiples Métodos de Pago', desc: 'Acepta efectivo, tarjetas, QR y transferencias bancarias integradas.' }
+                ]
+            },
+            simulador: {
+                badge: 'Simulador',
+                badgeStyle: 'background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);color:#c084fc',
+                title: 'Simulador Financiero',
+                desc: 'Herramienta de simulación comercial y financiera. Modela variaciones de precio de venta, proyecta márgenes y calcula puntos de equilibrio.',
+                preview: '../assets/simulador_preview.png',
+                featuresTitle: 'Simula antes de decidir',
+                featuresSubtitle: 'Modelos financieros interactivos para la toma de decisiones estratégicas.',
+                ctaUrl: 'https://simulador.novasolum.cloud',
+                ctaText: 'Ingresar al Simulador',
+                features: [
+                    { icon: 'dollar-sign', title: 'Simulación de Precios', desc: 'Modela diferentes escenarios de precios y visualiza el impacto en tus márgenes.' },
+                    { icon: 'trending-up', title: 'Proyección de Ingresos', desc: 'Estimaciones de ingresos basadas en diferentes variables de mercado.' },
+                    { icon: 'target', title: 'Punto de Equilibrio', desc: 'Cálculo automático del volumen mínimo de ventas para cubrir costos.' },
+                    { icon: 'layers', title: 'Escenarios Comparativos', desc: 'Compara múltiples escenarios lado a lado con variables ajustables.' },
+                    { icon: 'pie-chart', title: 'Análisis de Cobertura', desc: 'Evalúa la cobertura de mercado y penetración por zonas geográficas.' },
+                    { icon: 'file-bar-chart', title: 'Reportes Financieros', desc: 'Genera reportes ejecutivos listos para presentar a inversionistas o socios.' }
+                ]
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const sol = urlParams.get('sol') || 'novai';
+        const data = solutions[sol];
+
+        if (data) {
+            document.getElementById('hero-badge').innerHTML = data.badge;
+            document.getElementById('hero-badge').style.cssText = data.badgeStyle;
+            document.getElementById('hero-title').textContent = data.title;
+            document.getElementById('hero-desc').textContent = data.desc;
+            document.getElementById('preview-img').src = data.preview;
+            document.getElementById('preview-img').alt = data.title;
+            document.title = `${data.badge} | NovaSolum`;
+            document.getElementById('features-title').textContent = data.featuresTitle;
+            document.getElementById('features-subtitle').textContent = data.featuresSubtitle;
+
+            const grid = document.getElementById('features-grid');
+            grid.innerHTML = data.features.map(f => `
+                <div class="feature-card">
+                    <div class="feature-icon-wrap" style="background:rgba(255,255,255,0.05);border:1px solid var(--border-subtle);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" style="color:var(--accent-emerald)"><path d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <h3>${f.title}</h3>
+                    <p>${f.desc}</p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

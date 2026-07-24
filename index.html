@@ -508,23 +508,60 @@
         /* ==========================================================================
            SOLUCIONES EMPRESARIALES GRID WITH REFERENTIAL PREVIEW IMAGES
            ========================================================================== */
-        .ecosystem-section {
-            padding: 80px 0;
+            .ecosystem-section {
+            padding: 100px 0;
             position: relative;
+        }
+
+        .solutions-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .solutions-menu-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .solutions-menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-glow);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .solutions-menu-item svg {
+            width: 16px;
+            height: 16px;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--card-border-color, var(--border-subtle));
             border-radius: var(--radius-lg);
-            padding: 28px;
+            padding: 32px;
             backdrop-filter: blur(16px);
             transition: var(--transition);
             display: flex;
@@ -649,6 +686,87 @@
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #cbd5e1;
+        }
+
+        /* Features List (Pricing-style) */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
+            padding-top: 4px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke-width: 2.5;
+        }
+
+        .feature-item:nth-child(odd) .feature-icon {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* Product Name Badge */
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .product-badge.novai {
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .product-badge.geonova {
+            color: #22d3ee;
+            background: rgba(6, 182, 212, 0.12);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .product-badge.farmanova {
+            color: #f472b6;
+            background: rgba(236, 72, 153, 0.12);
+            border-color: rgba(236, 72, 153, 0.3);
+        }
+
+        .product-badge.simulador {
+            color: #c084fc;
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.3);
         }
 
         /* ==========================================================================
@@ -918,6 +1036,22 @@
             font-size: 13px;
         }
 
+        .footer-bottom-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent-purple);
+        }
+
         /* Mobile Menu Toggle Button */
         .mobile-menu-btn {
             display: none;
@@ -962,7 +1096,7 @@
             .metric-item { border-right: none; }
 
             .services-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
 
             .contact-info-card, .contact-form-card { padding: 24px; }
@@ -975,8 +1109,161 @@
             .metrics-grid { grid-template-columns: 1fr; }
             .hero-cta-group { flex-direction: column; width: 100%; }
             .hero-cta-group .btn { width: 100%; }
+            .pricing-grid { grid-template-columns: 1fr !important; }
+            .testimonials-grid { grid-template-columns: 1fr !important; }
+            .case-studies-grid { grid-template-columns: 1fr !important; }
+            .faq-list { max-width: 100% !important; }
+        }
+
+        /* ==========================================================================
+           TESTIMONIALS SECTION
+           ========================================================================== */
+        .testimonials-section { padding: 80px 0; position: relative; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(16px); transition: var(--transition); position: relative; }
+        .testimonial-card:hover { border-color: var(--border-glow); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .testimonial-stars { color: #fbbf24; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+        .testimonial-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 16px; }
+        .testimonial-name { font-weight: 700; color: #fff; font-size: 14px; }
+        .testimonial-role { font-size: 12px; color: var(--text-tertiary); }
+
+        /* ==========================================================================
+           CASE STUDIES SECTION
+           ========================================================================== */
+        .cases-section { padding: 80px 0; position: relative; }
+        .case-studies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .case-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition); }
+        .case-card:hover { border-color: var(--border-glow); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .case-header { padding: 28px 28px 0; }
+        .case-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .case-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .case-company { font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px; }
+        .case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 28px 28px; }
+        .case-metric { background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px; text-align: center; }
+        .case-metric-value { font-size: 24px; font-weight: 800; color: var(--accent-emerald); }
+        .case-metric-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .case-before-after { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; padding: 0 28px 28px; align-items: center; }
+        .case-ba-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; text-align: center; }
+        .case-ba-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .case-ba-label.before { color: #f87171; }
+        .case-ba-label.after { color: #34d399; }
+        .case-ba-value { font-size: 13px; color: var(--text-secondary); }
+        .case-ba-arrow { color: var(--accent-purple); font-size: 20px; }
+
+        /* ==========================================================================
+           ABOUT US SECTION
+           ========================================================================== */
+        .about-section { padding: 80px 0; position: relative; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .about-content h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+        .about-content p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+        .about-stat { text-align: center; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+        .about-stat-value { font-size: 28px; font-weight: 800; color: var(--accent-purple); }
+        .about-stat-label { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .about-values { display: flex; flex-direction: column; gap: 16px; }
+        .about-value-item { display: flex; gap: 14px; align-items: flex-start; }
+        .about-value-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); flex-shrink: 0; }
+        .about-value-title { font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 4px; }
+        .about-value-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+        /* ==========================================================================
+           PRICING SECTION
+           ========================================================================== */
+        .pricing-section { padding: 80px 0; position: relative; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 36px; backdrop-filter: blur(16px); transition: var(--transition); position: relative; display: flex; flex-direction: column; }
+        .pricing-card.featured { border-color: var(--accent-purple); box-shadow: 0 0 40px rgba(168,85,247,0.15); }
+        .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .pricing-card.featured::before { content: 'MÁS POPULAR'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--accent-purple); color: #fff; font-size: 10px; font-weight: 800; padding: 4px 16px; border-radius: 0 0 8px 8px; letter-spacing: 1px; }
+        .pricing-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .pricing-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+        .pricing-price { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 4px; font-family: var(--font-heading); }
+        .pricing-period { font-size: 13px; color: var(--text-tertiary); margin-bottom: 28px; }
+        .pricing-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex-grow: 1; }
+        .pricing-feature { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary); }
+        .pricing-feature svg { width: 16px; height: 16px; color: var(--accent-emerald); flex-shrink: 0; }
+
+        /* ==========================================================================
+           FAQ SECTION
+           ========================================================================== */
+        .faq-section { padding: 80px 0; position: relative; }
+        .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; transition: var(--transition); }
+        .faq-item:hover { border-color: var(--border-glow); }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: none; border: none; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; text-align: left; font-family: var(--font-main); }
+        .faq-question:hover { color: var(--accent-purple); }
+        .faq-chevron { transition: transform 0.3s ease; color: var(--text-tertiary); flex-shrink: 0; }
+        .faq-item.active .faq-chevron { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-answer-inner { padding: 0 24px 18px; font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ==========================================================================
+           DEMO BOOKING SECTION
+           ========================================================================== */
+        .demo-section { padding: 80px 0; position: relative; }
+        .demo-wrapper { background: linear-gradient(135deg, rgba(24, 24, 38, 0.7) 0%, rgba(10, 10, 18, 0.9) 100%); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 44px; backdrop-filter: blur(20px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .demo-info h3 { font-size: clamp(24px, 3.5vw, 32px); font-weight: 800; margin-bottom: 16px; color: #fff; }
+        .demo-info p { color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+        .demo-benefits { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+        .demo-benefit { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+        .demo-benefit svg { color: var(--accent-emerald); width: 18px; height: 18px; flex-shrink: 0; }
+        .demo-iframe-wrapper { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); min-height: 400px; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
+        .demo-iframe-placeholder { text-align: center; padding: 40px; color: var(--text-tertiary); }
+        .demo-iframe-placeholder .icon { font-size: 48px; margin-bottom: 16px; }
+        .demo-iframe-placeholder p { font-size: 14px; margin-bottom: 16px; }
+        @media (max-width: 768px) {
+            .demo-wrapper { grid-template-columns: 1fr; }
         }
     </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'FB_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NovaSolum",
+      "url": "https://novasolum.cloud",
+      "logo": "https://novasolum.cloud/assets/img/icon.png",
+      "description": "Soluciones de Inteligencia Artificial y automatizacion para empresas. CRM, punto de venta, localizacion geografica y analisis financiero.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Bolivia"
+      },
+      "sameAs": [
+        "https://wa.me/59179691952"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+59179691952",
+        "contactType": "sales",
+        "availableLanguage": ["Spanish"]
+      }
+    }
+    </script>
 </head>
 <body>
 
@@ -1144,16 +1431,37 @@
                 <p class="section-subtitle">Ingresa directamente a cada una de nuestras soluciones especializadas para administrar tus ventas, equipos, comercio y simulaciones operativas.</p>
             </div>
 
+            <div class="solutions-menu">
+                <a href="soluciones/soluciones.html?sol=novai" target="_blank" class="solutions-menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    NovAI CRM
+                </a>
+                <a href="soluciones/soluciones.html?sol=geonova360" target="_blank" class="solutions-menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    GeoNova360
+                </a>
+                <a href="soluciones/soluciones.html?sol=fichaje" target="_blank" class="solutions-menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    GeoNova Fichaje
+                </a>
+                <a href="soluciones/soluciones.html?sol=farmanova" target="_blank" class="solutions-menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    FarmaNova POS
+                </a>
+                <a href="soluciones/soluciones.html?sol=simulador" target="_blank" class="solutions-menu-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Simulador
+                </a>
+            </div>
+
             <div class="projects-grid">
                 
                 <!-- 1. NovAI CRM -->
                 <div class="project-card" style="--card-accent: var(--card-crm); --card-border-color: rgba(16, 185, 129, 0.25); --card-glow: rgba(16, 185, 129, 0.2); --card-accent-gradient: linear-gradient(135deg, #10b981, #059669);">
                     <div>
-                        <!-- Referential Image Preview -->
                         <div class="project-preview-wrapper">
-                            <img src="assets/crm_preview.png" alt="Vista previa Solución CRM & Ventas" class="project-preview-img">
+                            <img src="assets/crm_preview.png" alt="Vista previa NovAI CRM" class="project-preview-img">
                         </div>
-
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
@@ -1163,32 +1471,48 @@
                                 <span id="status-text-crm">Consultando...</span>
                             </div>
                         </div>
-                        <h3 class="project-title-text">Solución CRM & Ventas</h3>
+                        <div class="product-badge novai">NovAI</div>
+                        <h3 class="project-title-text">CRM & Ventas</h3>
                         <p class="project-desc-text">
                             Gestión unificada de clientes, pipeline de ventas en tiempo real, seguimiento automatizado de oportunidades y generación de cotizaciones empresariales.
                         </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-pill">Gestión de Clientes</span>
-                            <span class="tech-pill">Ventas Automatizadas</span>
-                            <span class="tech-pill">Pipeline IA</span>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Gestión de clientes y contactos con historial completo</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Pipeline de ventas visual con seguimiento en tiempo real</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Cotizaciones y propuestas empresariales automatizadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Reportes de ventas y métricas de rendimiento</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Seguimiento automatizado de oportunidades y lead scoring</span>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <a id="link-crm" href="https://crm.novasolum.cloud" target="_blank" class="btn btn-panel">
                             <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-                            Ingresar a la Solución CRM
+                            Ingresar a NovAI
                         </a>
                     </div>
                 </div>
 
-                <!-- 2. GeoNova Gestión -->
+                <!-- 2. GeoNova360 Gestión -->
                 <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.25); --card-glow: rgba(6, 182, 212, 0.2); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #0284c7);">
                     <div>
-                        <!-- Referential Image Preview -->
                         <div class="project-preview-wrapper">
-                            <img src="assets/geoweb_preview.png" alt="Vista previa GeoNova Gestión" class="project-preview-img">
+                            <img src="assets/geoweb_preview.png" alt="Vista previa GeoNova360" class="project-preview-img">
                         </div>
-
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
@@ -1198,20 +1522,38 @@
                                 <span id="status-text-geo">Consultando...</span>
                             </div>
                         </div>
-                        <h3 class="project-title-text">Solución GeoNova Gestión</h3>
+                        <div class="product-badge geonova">GeoNova360</div>
+                        <h3 class="project-title-text">Gestión de Personal</h3>
                         <p class="project-desc-text">
                             Plataforma de monitoreo y geolocalización en tiempo real. Optimización de rutas operativas, supervisión de cuadrillas y mapas interactivos.
                         </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-pill">Monitoreo GPS</span>
-                            <span class="tech-pill">Control de Rutas</span>
-                            <span class="tech-pill">Mapa Interactivo</span>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Monitoreo GPS en tiempo real de tu equipo en campo</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Optimización automática de rutas y zonas de cobertura</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Supervisión de cuadrillas con asignación de tareas</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Mapas interactivos con historial de ubicaciones</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Control de asistencia y fichaje geolocalizado</span>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <a id="link-geoweb" href="https://geo.novasolum.cloud" target="_blank" class="btn btn-panel">
                             <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-                            Ingresar a GeoNova Gestión
+                            Ingresar a GeoNova360
                         </a>
                     </div>
                 </div>
@@ -1219,11 +1561,9 @@
                 <!-- 3. GeoNova Fichaje (DESCARGA DE APK PROTEGIDA CON PIN) -->
                 <div class="project-card" style="--card-accent: var(--card-geo); --card-border-color: rgba(6, 182, 212, 0.25); --card-glow: rgba(6, 182, 212, 0.2); --card-accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);">
                     <div>
-                        <!-- Referential Image Preview -->
                         <div class="project-preview-wrapper">
                             <img src="assets/geoasist_preview.png" alt="Vista previa GeoNova Fichaje" class="project-preview-img">
                         </div>
-
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="smartphone" style="width: 24px; height: 24px;"></i>
@@ -1233,14 +1573,32 @@
                                 <span id="status-text-fichaje">Consultando...</span>
                             </div>
                         </div>
-                        <h3 class="project-title-text">Solución GeoNova Fichaje</h3>
+                        <div class="product-badge geonova">GeoNova</div>
+                        <h3 class="project-title-text">Fichaje Móvil</h3>
                         <p class="project-desc-text">
                             Sistema móvil de fichaje y control de asistencia para personal externo o en campo. Validación de ubicación geográfica e identidad segura.
                         </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-pill">Fichaje Móvil</span>
-                            <span class="tech-pill">Validación Geofence</span>
-                            <span class="tech-pill">Control Asistencia</span>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Fichaje con geolocalización y foto de verificación</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Control de asistencia en tiempo real para equipos remotos</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Validación geofence para zonas de trabajo autorizadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Reportes de asistencia y horas trabajadas automáticos</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>App Android descargable con acceso seguro por PIN</span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -1254,11 +1612,9 @@
                 <!-- 4. FarmaNova Comercio -->
                 <div class="project-card" style="--card-accent: var(--card-farma); --card-border-color: rgba(236, 72, 153, 0.25); --card-glow: rgba(236, 72, 153, 0.2); --card-accent-gradient: linear-gradient(135deg, #ec4899, #be185d);">
                     <div>
-                        <!-- Referential Image Preview -->
                         <div class="project-preview-wrapper">
-                            <img src="assets/farmago_preview.png" alt="Vista previa FarmaNova Comercio" class="project-preview-img">
+                            <img src="assets/farmago_preview.png" alt="Vista previa FarmaNova" class="project-preview-img">
                         </div>
-
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="shopping-bag" style="width: 24px; height: 24px;"></i>
@@ -1268,20 +1624,38 @@
                                 <span id="status-text-farmago">Consultando...</span>
                             </div>
                         </div>
-                        <h3 class="project-title-text">Solución FarmaNova Comercio</h3>
+                        <div class="product-badge farmanova">FarmaNova</div>
+                        <h3 class="project-title-text">Comercio & POS</h3>
                         <p class="project-desc-text">
-                            Portal e-Commerce automatizado para el sector farmacéutico. Sincronización en tiempo real de inventarios, pedidos digitales y catálogo inteligente.
+                            Sistema punto de venta y e-Commerce automatizado para el sector farmacéutico. Sincronización en tiempo real de inventarios, pedidos digitales y catálogo inteligente.
                         </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-pill">Tienda Digital</span>
-                            <span class="tech-pill">Sync Stock</span>
-                            <span class="tech-pill">Pasarela Pagos</span>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Punto de venta (POS) con interfaz táctil intuitiva</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Gestión de inventario con alertas de stock mínimo</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Catálogo de productos con categorías y precios</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Reportes de ventas diarios, semanales y mensuales</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Sincronización automática de stock entre puntos de venta</span>
+                            </div>
                         </div>
                     </div>
                     <div>
-                        <a id="link-farmago" href="https://farmago.novasolum.cloud" target="_blank" class="btn btn-panel">
+                        <a id="link-farmago" href="https://crmfarma.novasolum.cloud" target="_blank" class="btn btn-panel">
                             <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
-                            Ingresar a FarmaNova Comercio
+                            Ingresar a FarmaNova
                         </a>
                     </div>
                 </div>
@@ -1289,11 +1663,9 @@
                 <!-- 5. Simulador Financiero -->
                 <div class="project-card" style="--card-accent: var(--card-sim); --card-border-color: rgba(168, 85, 247, 0.25); --card-glow: rgba(168, 85, 247, 0.2); --card-accent-gradient: linear-gradient(135deg, #a855f7, #7e22ce);">
                     <div>
-                        <!-- Referential Image Preview -->
                         <div class="project-preview-wrapper">
                             <img src="assets/simulador_preview.png" alt="Vista previa Simulador Financiero" class="project-preview-img">
                         </div>
-
                         <div class="card-top">
                             <div class="project-icon">
                                 <i data-lucide="line-chart" style="width: 24px; height: 24px;"></i>
@@ -1303,14 +1675,32 @@
                                 <span id="status-text-simulador">Consultando...</span>
                             </div>
                         </div>
-                        <h3 class="project-title-text">Solución Simulador Financiero</h3>
+                        <div class="product-badge simulador">Simulador</div>
+                        <h3 class="project-title-text">Simulador Financiero</h3>
                         <p class="project-desc-text">
                             Herramienta de simulación comercial y financiera. Modela variaciones de precio de venta, proyecta márgenes y calcula puntos de equilibrio.
                         </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-pill">Proyección Ganancias</span>
-                            <span class="tech-pill">Simulación Precios</span>
-                            <span class="tech-pill">Análisis Cobertura</span>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Simulación de precios y márgenes de ganancia</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Proyección de ingresos y análisis de cobertura</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Cálculo de punto de equilibrio operativo</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Escenarios comparativos con variables ajustables</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                                <span>Reportes financieros para toma de decisiones</span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -1460,7 +1850,10 @@
                                 <option value="Marketing Digital con IA">Marketing Digital con IA</option>
                                 <option value="Automatización de Procesos">Automatización de Procesos & Workflows</option>
                                 <option value="Desarrollo de Apps IA a Medida">Desarrollo de Apps IA a la Medida</option>
-                                <option value="Solución CRM & Ventas">Solución CRM & Ventas</option>
+                                <option value="NovAI CRM">NovAI CRM & Ventas</option>
+                                <option value="GeoNova360">GeoNova360 Gestión</option>
+                                <option value="FarmaNova POS">FarmaNova Comercio & POS</option>
+                                <option value="Simulador Financiero">Simulador Financiero</option>
                                 <option value="Diagnóstico General de Empresa">Diagnóstico General de Empresa</option>
                             </select>
                         </div>
@@ -1475,6 +1868,336 @@
                             Enviar Formulario & Abrir WhatsApp
                         </button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill" style="background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.3); color: #fbbf24;">Testimonios</div>
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Empresas que ya confían en las soluciones de NovaSolum para escalar sus operaciones.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"La implementación de NovAI CRM transformó completamente nuestra gestión de ventas. Redujimos un 60% el tiempo en tareas administrativas y aumentamos las conversiones en un 35%."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <div class="testimonial-name">María Rodríguez</div>
+                            <div class="testimonial-role">Directora Comercial — CorpLimpieza</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"GeoNova360 nos dio visibilidad total sobre nuestro equipo en campo. La optimización de rutas nos ahorró un 40% en costos de combustible y mejoró la puntualidad del servicio."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CL</div>
+                        <div>
+                            <div class="testimonial-name">Carlos López</div>
+                            <div class="testimonial-role">Gerente de Operaciones — ServiTech</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"FarmaNova POS sincroniza automáticamente el inventario entre nuestras 3 sucursales. Ya no perdemos ventas por falta de stock y los reportes se generan solos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AF</div>
+                        <div>
+                            <div class="testimonial-name">Andrea Fernández</div>
+                            <div class="testimonial-role">Propietaria — FarmaSalud</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS DE ÉXITO -->
+    <section class="cases-section" id="casos-exito">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill" style="background: rgba(52, 211, 153, 0.12); border-color: rgba(52, 211, 153, 0.3); color: #34d399;">Casos de Éxito</div>
+                <h2 class="section-title">Resultados que hablan por sí solos</h2>
+                <p class="section-subtitle">Cada proyecto es una historia de transformación. Estos son algunos de los impactos medibles que hemos logrado.</p>
+            </div>
+            <div class="case-studies-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-badge novai" style="background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.3);">NovAI CRM</div>
+                        <h3 class="case-title">Automatización Comercial Completa</h3>
+                        <p class="case-company">Empresa de Servicios de Limpieza Industrial — Santa Cruz</p>
+                    </div>
+                    <div class="case-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">+35%</div>
+                            <div class="case-metric-label">Más Conversiones</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">-60%</div>
+                            <div class="case-metric-label">Tiempo Administrativo</div>
+                        </div>
+                    </div>
+                    <div class="case-before-after">
+                        <div class="case-ba-box">
+                            <div class="case-ba-label before">Antes</div>
+                            <div class="case-ba-value">Seguimiento manual en hojas de cálculo, leads perdidos, cotizaciones tardías</div>
+                        </div>
+                        <div class="case-ba-arrow">→</div>
+                        <div class="case-ba-box">
+                            <div class="case-ba-label after">Después</div>
+                            <div class="case-ba-value">Pipeline automatizado, alertas de seguimiento, cotizaciones en 2 minutos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-badge geonova" style="background: rgba(6,182,212,0.12); color: #22d3ee; border: 1px solid rgba(6,182,212,0.3);">GeoNova360</div>
+                        <h3 class="case-title">Optimización de Flota y Rutas</h3>
+                        <p class="case-company">Empresa de Distribución de Bebidas — Cochabamba</p>
+                    </div>
+                    <div class="case-metrics">
+                        <div class="case-metric">
+                            <div class="case-metric-value">-40%</div>
+                            <div class="case-metric-label">Costo Combustible</div>
+                        </div>
+                        <div class="case-metric">
+                            <div class="case-metric-value">+28%</div>
+                            <div class="case-metric-label">Entregas a Tiempo</div>
+                        </div>
+                    </div>
+                    <div class="case-before-after">
+                        <div class="case-ba-box">
+                            <div class="case-ba-label before">Antes</div>
+                            <div class="case-ba-value">Rutas duplicadas, conductor sin monitoreo, llegadas impuntuales</div>
+                        </div>
+                        <div class="case-ba-arrow">→</div>
+                        <div class="case-ba-box">
+                            <div class="case-ba-label after">Después</div>
+                            <div class="case-ba-value">Rutas optimizadas por IA, GPS en tiempo real, alertas automáticas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="badge-pill" style="background: rgba(192, 132, 252, 0.12); border-color: rgba(192, 132, 252, 0.3); color: #c084fc;">Sobre Nosotros</div>
+                    <h3 style="margin-top: 14px;">Somos la tecnología que impulsa tu negocio</h3>
+                    <p>NovaSolum nació con la misión de acercar la Inteligencia Artificial y la automatización a las empresas bolivianas. No somos una consultora genérica — somos ingenieros que construyen soluciones reales, desplegadas y funcionando en días, no meses.</p>
+                    <p>Nuestro ecosistema de soluciones está diseñado para resolver problemas operativos concretos: gestión de clientes, control de personal en campo, punto de venta, y planificación financiera. Todo integrado, todo en la nube, todo a tu medida.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="about-stat-value">5+</div>
+                            <div class="about-stat-label">Soluciones Activas</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-value">99.9%</div>
+                            <div class="about-stat-label">Uptime Promedio</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-value">24h</div>
+                            <div class="about-stat-label">Despliegue Inicial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-values">
+                    <div class="about-value-item">
+                        <div class="about-value-icon"><i data-lucide="zap" style="width: 20px; height: 20px;"></i></div>
+                        <div>
+                            <div class="about-value-title">Velocidad de Implementación</div>
+                            <div class="about-value-desc">Desplegamos soluciones funcionales en 24-72 horas. Sin burocracia, sin excusas.</div>
+                        </div>
+                    </div>
+                    <div class="about-value-item">
+                        <div class="about-value-icon"><i data-lucide="shield" style="width: 20px; height: 20px;"></i></div>
+                        <div>
+                            <div class="about-value-title">Código Propietario</div>
+                            <div class="about-value-desc">No dependemos de plataformas de terceros. Nuestro código es escalable, seguro y tuyo.</div>
+                        </div>
+                    </div>
+                    <div class="about-value-item">
+                        <div class="about-value-icon"><i data-lucide="headphones" style="width: 20px; height: 20px;"></i></div>
+                        <div>
+                            <div class="about-value-title">Soporte Directo</div>
+                            <div class="about-value-desc">Acceso directo a los ingenieros que construyeron tu sistema. Sin call centers, sin tickets.</div>
+                        </div>
+                    </div>
+                    <div class="about-value-item">
+                        <div class="about-value-icon"><i data-lucide="target" style="width: 20px; height: 20px;"></i></div>
+                        <div>
+                            <div class="about-value-title">Enfoque en Resultados</div>
+                            <div class="about-value-desc">Cada solución se mide por su impacto real: horas ahorradas, ventas incrementadas, costos reducidos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="pricing-section" id="precios">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill" style="background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.3); color: #fbbf24;">Planes & Precios</div>
+                <h2 class="section-title">Inversión que se paga sola</h2>
+                <p class="section-subtitle">Elige la solución que mejor se adapte a tus necesidades. Todos los planes incluyen soporte y actualizaciones.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Basico / Basic</div>
+                    <div class="pricing-desc">Ideal para emprendedores y negocios pequeños que dan sus primeros pasos con IA.</div>
+                    <div class="pricing-price">$29</div>
+                    <div class="pricing-period">/mes por solucion / per solution</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>1 solucion a elegir / 1 solution</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Hasta 5 usuarios / Up to 5 users</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Soporte por WhatsApp</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Actualizaciones incluidas / Updates included</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Despliegue en 48h / Deploy in 48h</span></div>
+                    </div>
+                    <a href="#contacto" class="btn btn-secondary" style="width: 100%; text-align: center;">Empezar / Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Medio / Medium</div>
+                    <div class="pricing-desc">Para empresas en crecimiento que necesitan mas de una solucion integrada.</div>
+                    <div class="pricing-price">$79</div>
+                    <div class="pricing-period">/mes combo / per month</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Hasta 3 soluciones / Up to 3 solutions</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Hasta 15 usuarios / Up to 15 users</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Soporte prioritario 24/7</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Integraciones basicas / Basic integrations</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Dashboard ejecutivo / Executive dashboard</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Despliegue en 24h / Deploy in 24h</span></div>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%; text-align: center; background: var(--accent-purple); color: #fff;">Elegir / Choose</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Completo / Complete</div>
+                    <div class="pricing-desc">Suite completa para empresas que necesitan todas las soluciones integradas.</div>
+                    <div class="pricing-price">$149</div>
+                    <div class="pricing-period">/mes suite completo / full suite</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Soluciones ilimitadas / Unlimited solutions</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Usuarios ilimitados / Unlimited users</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Soporte dedicado 24/7 / Dedicated support</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Integraciones avanzadas / Advanced integrations</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>API completa / Full API access</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Capacitacion presencial / On-site training</span></div>
+                    </div>
+                    <a href="#contacto" class="btn btn-secondary" style="width: 100%; text-align: center;">Elegir / Choose</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Personalizado / Custom</div>
+                    <div class="pricing-desc">Soluciones 100% a la medida para corporaciones con necesidades complejas.</div>
+                    <div class="pricing-price">Custom</div>
+                    <div class="pricing-period">cotizacion personalizada / custom quote</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Todo lo del plan Completo / Everything in Complete</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Desarrollo a la medida / Custom development</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>SLA garantizado / Guaranteed SLA</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Infraestructura dedicada / Dedicated infrastructure</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Consultoria estrategica / Strategic consulting</span></div>
+                        <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Migracion de datos / Data migration</span></div>
+                    </div>
+                    <a href="#contacto" class="btn btn-secondary" style="width: 100%; text-align: center;">Solicitar / Request</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge-pill">Preguntas Frecuentes</div>
+                <h2 class="section-title">Resolvemos tus dudas</h2>
+                <p class="section-subtitle">Las respuestas a las preguntas que más nos hacen nuestros clientes.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cuánto tiempo toma implementar una solucion?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">La mayoria de nuestras soluciones estan desplegadas y funcionales en 24 a 72 horas dependiendo de la complejidad. Los proyectos Enterprise pueden tomar 1-2 semanas para personalizaciones avanzadas.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Necesito conocimientos tecnicos para usar las soluciones?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">No. Todas nuestras soluciones estan disenadas con interfaces intuitivas que cualquier persona puede usar. Ademas, incluimos capacitacion inicial y soporte continuo para tu equipo.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Que pasa si necesito modificar algo despues del despliegue?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Nuestras soluciones son 100% adaptables. Los cambios menores se realizan en horas. Para modificaciones grandes, trabajamos con un sprint de desarrollo priorizado sin interrumpir tu operacion.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Mis datos estan seguros?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Si. Utilizamos infraestructura en la nube con cifrado de extremo a extremo, copias de seguridad automaticas y cumplimiento con estandares de seguridad internacionales. Tus datos nunca se comparten con terceros.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Puedo probar antes de contratar?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Si. Ofrecemos una demostracion gratuita y personalizada donde mostramos como la solucion aplica especificamente a tu negocio. Sin compromiso, sin tarjeta de credito.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Que metodos de pago aceptan?
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Aceptamos transferencia bancaria, QR, y pagos en efectivo. Para planes Enterprise ofrecemos facturacion mensual con plazo de pago extendido.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO BOOKING -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="demo-wrapper">
+                <div class="demo-info">
+                    <div class="badge-pill" style="background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.3); color: #22d3ee;">Agenda tu Demo</div>
+                    <h3 style="margin-top: 14px;">Prueba antes de decidir</h3>
+                    <p>Agenda una demostracion gratuita de 30 minutos donde mostramos en vivo como una solucion de NovaSolum puede aplicarse especificamente a tu negocio.</p>
+                    <div class="demo-benefits">
+                        <div class="demo-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Demo personalizada para tu industria</span></div>
+                        <div class="demo-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>30 minutos, sin compromiso</span></div>
+                        <div class="demo-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Respuesta a todas tus preguntas tecnicas</span></div>
+                        <div class="demo-benefit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg><span>Cotizacion personalizada al instante</span></div>
+                    </div>
+                    <a href="https://wa.me/59179691952?text=%C2%A1Hola%21%20Quiero%20agendar%20una%20demostracion%20gratuita%20de%20las%20soluciones%20NovaSolum." target="_blank" class="btn btn-whatsapp" style="width: 100%; text-align: center; padding: 16px 24px;">
+                        <svg class="floating-wpp-icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Agendar Demo por WhatsApp
+                    </a>
+                </div>
+                <div class="demo-iframe-wrapper">
+                    <div class="demo-iframe-placeholder">
+                        <div class="icon">📅</div>
+                        <p style="color: var(--text-secondary);">Aqui se integrara tu calendario de reservas (Calendly, Cal.com, etc.)</p>
+                        <p style="font-size: 12px; color: var(--text-tertiary);">Reemplaza esta seccion con un iframe de tu herramienta de scheduling.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1495,10 +2218,10 @@
                 <div>
                     <h4 class="footer-col-title">Soluciones Empresariales</h4>
                     <ul class="footer-links">
-                        <li><a href="https://crm.novasolum.cloud" id="foot-crm" target="_blank" class="footer-link">Solución CRM</a></li>
-                        <li><a href="https://geo.novasolum.cloud" id="foot-geo" target="_blank" class="footer-link">GeoNova Gestión</a></li>
+                        <li><a href="https://crm.novasolum.cloud" id="foot-crm" target="_blank" class="footer-link">NovAI CRM</a></li>
+                        <li><a href="https://geo.novasolum.cloud" id="foot-geo" target="_blank" class="footer-link">GeoNova360 Gestión</a></li>
                         <li><a href="https://fichaje.novasolum.cloud" id="foot-fichaje" target="_blank" class="footer-link">GeoNova Fichaje</a></li>
-                        <li><a href="https://farmago.novasolum.cloud" id="foot-farmago" target="_blank" class="footer-link">FarmaNova Comercio</a></li>
+                        <li><a href="https://crmfarma.novasolum.cloud" id="foot-farmago" target="_blank" class="footer-link">FarmaNova POS</a></li>
                         <li><a href="https://simulador.novasolum.cloud" id="foot-simulador" target="_blank" class="footer-link">Simulador Financiero</a></li>
                     </ul>
                 </div>
@@ -1525,7 +2248,11 @@
 
             <div class="footer-bottom">
                 <div>© 2026 NovaSolum Business Suite. Todos los derechos reservados.</div>
-                <div>novasolum.cloud</div>
+                <div class="footer-bottom-links">
+                    <a href="privacidad.html">Privacidad</a>
+                    <a href="terminos.html">Terminos</a>
+                    <span>novasolum.cloud</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -1566,6 +2293,14 @@
         function toggleMobileMenu() {
             const menu = document.getElementById('nav-menu');
             if (menu) menu.classList.toggle('active');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
         }
 
         /* ==========================================================================
@@ -1625,7 +2360,7 @@
             crm: IS_LOCAL ? 'http://localhost:4001' : 'https://crm.novasolum.cloud',
             geo: IS_LOCAL ? 'http://localhost:4002' : 'https://geo.novasolum.cloud',
             fichaje: IS_LOCAL ? 'http://localhost:4003' : 'https://fichaje.novasolum.cloud',
-            farmago: IS_LOCAL ? 'http://localhost:4004' : 'https://farmago.novasolum.cloud',
+            farmago: IS_LOCAL ? 'http://localhost:4004' : 'https://crmfarma.novasolum.cloud',
             simulador: IS_LOCAL ? 'http://localhost:4005' : 'https://simulador.novasolum.cloud'
         };
 
@@ -1645,7 +2380,7 @@
             { key: 'crm', port: 4001, domain: 'https://crm.novasolum.cloud' },
             { key: 'geo', port: 4002, domain: 'https://geo.novasolum.cloud' },
             { key: 'fichaje', port: 4003, domain: 'https://fichaje.novasolum.cloud' },
-            { key: 'farmago', port: 4004, domain: 'https://farmago.novasolum.cloud' },
+            { key: 'farmago', port: 4004, domain: 'https://crmfarma.novasolum.cloud' },
             { key: 'simulador', port: 4005, domain: 'https://simulador.novasolum.cloud' }
         ];
 
